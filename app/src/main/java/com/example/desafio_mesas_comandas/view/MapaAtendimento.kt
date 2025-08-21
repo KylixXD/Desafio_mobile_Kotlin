@@ -6,6 +6,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 
 @Composable
-fun MapaAtendimento(modifier: Modifier, navController: NavController) {
+fun MapaAtendimento(modifier: Modifier = Modifier, navController: NavController) {
     Text("Teste Mapa")
 }
