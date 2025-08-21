@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.desafio_mesas_comandas.view
 
 import android.annotation.SuppressLint
@@ -5,6 +7,8 @@ import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,13 +18,26 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SheetState
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,6 +49,7 @@ import androidx.navigation.NavController
 import com.example.desafio_mesas_comandas.R
 import com.example.desafio_mesas_comandas.ui.theme.Typography
 import com.example.desafio_mesas_comandas.ui.theme.neutro
+import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -43,11 +61,90 @@ fun HomePage(modifier: Modifier = Modifier, navController: NavController) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TelaInicial(navController: NavController,modifier: Modifier = Modifier) {
+fun TelaInicial(navController: NavController, modifier: Modifier = Modifier) {
+    var showBottomSheet by remember { mutableStateOf(false) }
+
     TopBar()
     TituloPage("Rafael", "Sei la Restaurante")
-    MenuGrid{ route -> navController.navigate(route) }
+    MenuGrid(
+        onNovoPedidoClick = { showBottomSheet = true },
+        onNavigate = { route -> navController.navigate(route) }
+    )
+
+    NovoPedidoBottomSheet(
+        showSheet = showBottomSheet,
+        onDismissRequest = { showBottomSheet = false }
+    ) {
+        // Conteúdo do BottomSheet
+        val scope = rememberCoroutineScope()
+        val sheetState = rememberModalBottomSheetState()
+
+        Text(
+            text = "Novo pedido",
+            style = MaterialTheme.typography.titleMedium
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "Selecione o tipo de pedido",
+            style = MaterialTheme.typography.bodyMedium,
+            color = Color.Gray
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Opção 1: Mesa/Comanda
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(8.dp),
+            colors = CardDefaults.cardColors(containerColor = Color(0xFFF7F5F5)),
+            onClick = {
+                scope.launch {
+                    sheetState.hide() // Inicia a animação de fechar
+                    showBottomSheet = false // Define o estado para 'false' após a animação
+                    navController.navigate("MesaComanda")
+                }
+            }
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text("Mesa/Comanda", style = MaterialTheme.typography.bodyLarge)
+                Icon(Icons.AutoMirrored.Filled.ArrowForward, contentDescription = null)
+            }
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Opção 2: Balcão
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(8.dp),
+            colors = CardDefaults.cardColors(containerColor = Color(0xFFF7F5F5)),
+            onClick = {
+                scope.launch {
+                    sheetState.hide()
+                    showBottomSheet = false
+                    navController.navigate("balcaoComanda")
+                }
+            }
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text("Balcão", style = MaterialTheme.typography.bodyLarge)
+                Icon(Icons.AutoMirrored.Filled.ArrowForward, contentDescription = null)
+            }
+        }
+    }
 }
 
 @Composable
@@ -134,13 +231,6 @@ fun Cards(texto: String, icon: ImageVector, onClick: () -> Unit) {
             containerColor = neutro
         ),
         onClick = onClick,
-        /*onClick = {
-            if (texto == "Novo Pedido") {
-                // TODO: logica do Bottomsheet
-            } else {
-                route?.let { navController.navigate(it) }
-            }
-        }*/
     ) {
         Column(
             modifier = Modifier
@@ -160,7 +250,11 @@ fun Cards(texto: String, icon: ImageVector, onClick: () -> Unit) {
 }
 
 @Composable
-fun MenuGrid(modifier: Modifier = Modifier, onNavigate: (String) -> Unit) {
+fun MenuGrid(
+    modifier: Modifier = Modifier,
+    onNavigate: (String) -> Unit,
+    onNovoPedidoClick: () -> Unit
+) {
     Spacer(modifier = Modifier.height(24.dp))
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -173,29 +267,52 @@ fun MenuGrid(modifier: Modifier = Modifier, onNavigate: (String) -> Unit) {
             Cards(
                 "Novo Pedido",
                 icon = ImageVector.vectorResource(id = R.drawable.add_icon),
-                onClick = {
-                    /*if (texto == "Novo Pedido") {
-                        // TODO: logica do Bottomsheet
-                    } else {
-                        route?.let { navController.navigate(it) }
-                    }*/
-                }
-
+                onClick = onNovoPedidoClick,
             )
         }
         item {
             Cards(
                 "Mapa de atendimento",
                 icon = ImageVector.vectorResource(id = R.drawable.map_icon),
-                onClick = { onNavigate("mapaAtendimento")},
+                onClick = { onNavigate("mapaAtendimento") },
             )
         }
         item {
             Cards(
                 "Configurações",
                 icon = ImageVector.vectorResource(id = R.drawable.settings_icon),
-                onClick = { onNavigate("mapaAtendimento")},
+                onClick = { onNavigate("mapaAtendimento") },
             )
         }
     }
 }
+
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+fun NovoPedidoBottomSheet(
+    showSheet: Boolean,
+    onDismissRequest: () -> Unit,
+    content: @Composable ColumnScope.() -> Unit
+) {
+    val sheetState = rememberModalBottomSheetState(
+        skipPartiallyExpanded = true
+    )
+    val scope = rememberCoroutineScope()
+
+    if (showSheet) {
+        ModalBottomSheet(
+            onDismissRequest = onDismissRequest,
+            sheetState = sheetState,
+            containerColor = Color.White
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.Start,
+                content = content
+            )
+        }
+    }
+}
+
