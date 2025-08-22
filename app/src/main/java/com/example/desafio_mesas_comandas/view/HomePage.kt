@@ -18,8 +18,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -28,7 +26,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SheetState
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
@@ -36,7 +33,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -77,54 +73,43 @@ fun TelaInicial(navController: NavController, modifier: Modifier = Modifier) {
         showSheet = showBottomSheet,
         onDismissRequest = { showBottomSheet = false }
     ) {
-        // Conteúdo do BottomSheet
         val scope = rememberCoroutineScope()
         val sheetState = rememberModalBottomSheetState()
 
-        Text(
-            text = "Novo pedido",
-            style = MaterialTheme.typography.titleMedium
-        )
-        Spacer(modifier = Modifier.height(4.dp))
-        Text(
-            text = "Selecione o tipo de pedido",
-            style = MaterialTheme.typography.bodyMedium,
-            color = Color.Gray
-        )
-        Spacer(modifier = Modifier.height(16.dp))
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Novo pedido",
+                style = MaterialTheme.typography.titleMedium
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "Selecione o tipo de pedido",
+                style = MaterialTheme.typography.bodyMedium,
+                color = Color.Gray
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+        }
 
-        // Opção 1: Mesa/Comanda
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(8.dp),
-            colors = CardDefaults.cardColors(containerColor = Color(0xFFF7F5F5)),
+        CardsSheet(
+            "Mesa/Comanda",
+            iconeDireita = ImageVector.vectorResource(id = R.drawable.chevron_right),
+            iconeEsquerda = ImageVector.vectorResource(id = R.drawable.table_restaurant),
             onClick = {
                 scope.launch {
-                    sheetState.hide() // Inicia a animação de fechar
-                    showBottomSheet = false // Define o estado para 'false' após a animação
+                    sheetState.hide()
+                    showBottomSheet = false
                     navController.navigate("MesaComanda")
                 }
             }
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text("Mesa/Comanda", style = MaterialTheme.typography.bodyLarge)
-                Icon(Icons.AutoMirrored.Filled.ArrowForward, contentDescription = null)
-            }
-        }
+        )
 
-        Spacer(modifier = Modifier.height(8.dp))
-
-        // Opção 2: Balcão
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(8.dp),
-            colors = CardDefaults.cardColors(containerColor = Color(0xFFF7F5F5)),
+        CardsSheet(
+            "Balcão",
+            iconeDireita = ImageVector.vectorResource(id = R.drawable.chevron_right),
+            iconeEsquerda = ImageVector.vectorResource(id = R.drawable.shopping_bag_speed),
             onClick = {
                 scope.launch {
                     sheetState.hide()
@@ -132,18 +117,7 @@ fun TelaInicial(navController: NavController, modifier: Modifier = Modifier) {
                     navController.navigate("balcaoComanda")
                 }
             }
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text("Balcão", style = MaterialTheme.typography.bodyLarge)
-                Icon(Icons.AutoMirrored.Filled.ArrowForward, contentDescription = null)
-            }
-        }
+        )
     }
 }
 
@@ -250,6 +224,47 @@ fun Cards(texto: String, icon: ImageVector, onClick: () -> Unit) {
 }
 
 @Composable
+fun CardsSheet(
+    texto: String,
+    iconeEsquerda: ImageVector,
+    iconeDireita: ImageVector,
+    onClick: () -> Unit
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(8.dp),
+        colors = CardDefaults.cardColors(containerColor = neutro),
+        onClick = onClick
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Icone(
+                imageVector = iconeEsquerda,
+                modifier = Modifier.size(24.dp),
+                contentDescription = texto
+            )
+            Text(
+                texto,
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(horizontal = 16.dp)
+            )
+
+            Icone(
+                imageVector = iconeDireita,
+                modifier = Modifier.size(24.dp),
+                contentDescription = texto
+            )
+        }
+    }
+}
+
+@Composable
 fun MenuGrid(
     modifier: Modifier = Modifier,
     onNavigate: (String) -> Unit,
@@ -297,7 +312,7 @@ fun NovoPedidoBottomSheet(
     val sheetState = rememberModalBottomSheetState(
         skipPartiallyExpanded = true
     )
-    val scope = rememberCoroutineScope()
+    //val scope = rememberCoroutineScope()
 
     if (showSheet) {
         ModalBottomSheet(
