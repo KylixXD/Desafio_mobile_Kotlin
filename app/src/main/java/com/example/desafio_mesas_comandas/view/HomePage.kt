@@ -5,6 +5,7 @@ package com.example.desafio_mesas_comandas.view
 import android.annotation.SuppressLint
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -36,6 +38,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
@@ -43,10 +46,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.desafio_mesas_comandas.R
 import com.example.desafio_mesas_comandas.ui.theme.Typography
+import com.example.desafio_mesas_comandas.ui.theme.laranja
 import com.example.desafio_mesas_comandas.ui.theme.neutro
 import kotlinx.coroutines.launch
 
@@ -66,7 +71,7 @@ fun TelaInicial(navController: NavController, modifier: Modifier = Modifier) {
     var showBottomSheet by remember { mutableStateOf(false) }
 
     TopBar()
-    TituloPage("Rafael", "Sei la Restaurante")
+    TituloPage("Rafael Nóbrega", "Sei la Restaurante")
     MenuGrid(
         onNovoPedidoClick = { showBottomSheet = true },
         onNavigate = { route -> navController.navigate(route) }
@@ -178,11 +183,15 @@ fun TituloPage(waiter: String, restaurante: String, modifier: Modifier = Modifie
 
 @Composable
 fun ImagemTopo(modifier: Modifier = Modifier) {
-    Image(
-        painter = painterResource(R.drawable.logo_comanda),
-        contentDescription = null,
-        modifier = modifier.size(160.dp),
-    )
+    Row(Modifier, verticalAlignment = Alignment.CenterVertically){
+        Image(
+            painter = painterResource(R.drawable.pigz_logo),
+            contentDescription = null,
+            modifier = modifier.height(20.dp).width(39.73.dp),
+        )
+        Text("Comanda", color = laranja)
+    }
+
 }
 
 @Composable
@@ -190,13 +199,14 @@ fun TopBar(modifier: Modifier = Modifier) {
     Spacer(modifier = Modifier.height(24.dp))
     Column(
         modifier = Modifier
-            .size(1000.dp, 100.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .fillMaxWidth().height(56.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceEvenly
 
     ) {
         ImagemTopo()
-        HorizontalDivider(color = Color.LightGray, thickness = 1.dp)
     }
+    HorizontalDivider(color = Color.LightGray, thickness = 1.dp)
 }
 
 @Composable
@@ -301,7 +311,7 @@ fun MenuGrid(
             Cards(
                 "Configurações",
                 icon = ImageVector.vectorResource(id = R.drawable.settings_icon),
-                onClick = { onNavigate("mapaAtendimento") },
+                onClick = { onNavigate("configuracaoTela") },
             )
         }
     }
@@ -336,7 +346,7 @@ fun NovoPedidoBottomSheet(
     }
 }
 
-@Preview
+@Preview(showSystemUi = true)
 @Composable
 private fun HomePagePreview() {
     val navController = rememberNavController()
