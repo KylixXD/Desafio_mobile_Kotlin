@@ -45,7 +45,7 @@ import com.example.desafio_mesas_comandas.R
 import com.example.desafio_mesas_comandas.ui.theme.laranja
 
 @Composable
-fun MapaAtendimento(navController: NavController) {
+fun MapScreen(navController: NavController) {
     ParteCimaApp(onBackClick = { navController.popBackStack() })
 }
 
@@ -75,7 +75,7 @@ fun ParteCimaApp(onBackClick: () -> Unit) {
         OutlinedTextField(
             value = searchText,
             onValueChange = { searchText = it },
-            placeholder = { Text("Cliente, mesa, comanda, atendente", fontSize = 15.sp) },
+            placeholder = { Text("Vendedor, mesa, comanda, atendente", fontSize = 15.sp) },
             leadingIcon = {
                 Icon(
                     imageVector = ImageVector.vectorResource(id = R.drawable.search_icon),
@@ -94,9 +94,9 @@ fun ParteCimaApp(onBackClick: () -> Unit) {
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent,
-                focusedPlaceholderColor = Color.Transparent,
-                unfocusedPlaceholderColor = Color.Transparent,
-                disabledPlaceholderColor = Color.Transparent
+//                focusedPlaceholderColor = Color.Transparent,
+//                unfocusedPlaceholderColor = Color.Transparent,
+//                disabledPlaceholderColor = Color.Transparent
             )
         )
         HorizontalDivider(color = Color.LightGray, thickness = 1.dp)
@@ -173,14 +173,8 @@ fun MesasGrid(modifier: Modifier = Modifier) {
             )
         }
     }
-//    Row(horizontalArrangement = Arrangement.SpaceBetween) {
-//        CardMesa(1,"Ciclano", 10.0, 35.10,"Rafael")
-//        CardMesa(2,"Fulano", 10.00, 10.00,"Rafael")
-//        CardMesa(3,"Beltrano", 10.0, 3.10,"Rafael")
-//    }
 }
 
-//numMesa:Int, nomeCliente: String, preco: Double, waiter: String, onClick: () -> Unit
 @Composable
 fun CardMesa(numMesa: Int, nomeCliente: String, tempo: Double, preco: Double, waiter: String) {
     Card(
@@ -230,5 +224,5 @@ private fun MapaAtendimentoPreview() {
 @Preview
 @Composable
 private fun CardMesaPreview() {
-    CardMesa(1, "Ciclano", 10.0, 35.10, "Rafael")
+    CardMesa(1, "Ciclano", 10.00, 35.10, "Rafael")
 }

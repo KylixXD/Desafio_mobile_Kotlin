@@ -2,13 +2,11 @@
 
 package com.example.desafio_mesas_comandas.view
 
+import NewOrderBottomSheet
 import android.annotation.SuppressLint
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,17 +14,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
@@ -38,22 +33,20 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.desafio_mesas_comandas.R
-import com.example.desafio_mesas_comandas.ui.theme.Typography
-import com.example.desafio_mesas_comandas.ui.theme.laranja
+import com.example.desafio_mesas_comandas.components.CardSheet
+import com.example.desafio_mesas_comandas.components.CardsMenu
+import com.example.desafio_mesas_comandas.components.HeaderHome
+import com.example.desafio_mesas_comandas.components.TitleHome
 import com.example.desafio_mesas_comandas.ui.theme.neutro
-import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -70,14 +63,15 @@ fun HomePage(modifier: Modifier = Modifier, navController: NavController) {
 fun TelaInicial(navController: NavController, modifier: Modifier = Modifier) {
     var showBottomSheet by remember { mutableStateOf(false) }
 
-    TopBar()
-    TituloPage("Rafael Nóbrega", "Sei la Restaurante")
+    HeaderHome()
+    TitleHome("Rafael Nóbrega", "Sei la Restaurante")
+//    TituloPage()
     MenuGrid(
         onNovoPedidoClick = { showBottomSheet = true },
         onNavigate = { route -> navController.navigate(route) }
     )
 
-    NovoPedidoBottomSheet(
+    NewOrderBottomSheet(
         showSheet = showBottomSheet,
         onDismissRequest = { showBottomSheet = false }
     ) {
@@ -101,32 +95,20 @@ fun TelaInicial(navController: NavController, modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(16.dp))
         }
 
-        CardsSheet(
+        CardSheet(
             "Mesa/Comanda",
-            iconeDireita = ImageVector.vectorResource(id = R.drawable.chevron_right),
-            iconeEsquerda = ImageVector.vectorResource(id = R.drawable.table_restaurant),
-            onClick = {
-                scope.launch {
-                    sheetState.hide()
-                    showBottomSheet = false
-                    navController.navigate("MesaComanda")
-                }
-            }
+            rightIcon = ImageVector.vectorResource(id = R.drawable.chevron_right),
+            leftIcon = ImageVector.vectorResource(id = R.drawable.table_restaurant),
+            onClick = {}
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        CardsSheet(
+        CardSheet(
             "Balcão",
-            iconeDireita = ImageVector.vectorResource(id = R.drawable.chevron_right),
-            iconeEsquerda = ImageVector.vectorResource(id = R.drawable.shopping_bag_speed),
-            onClick = {
-                scope.launch {
-                    sheetState.hide()
-                    showBottomSheet = false
-                    navController.navigate("balcaoComanda")
-                }
-            }
+            rightIcon = ImageVector.vectorResource(id = R.drawable.chevron_right),
+            leftIcon = ImageVector.vectorResource(id = R.drawable.shopping_bag_speed),
+            onClick = {}
         )
     }
 }
@@ -159,126 +141,6 @@ fun Icone(
     }
 }
 
-
-@Composable
-fun TituloPage(waiter: String, restaurante: String, modifier: Modifier = Modifier) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(70.dp)
-            .padding(start = 16.dp, end = 16.dp)
-    ) {
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(text = waiter, style = Typography.titleLarge, modifier = Modifier)
-        Text(
-            text = restaurante,
-            style = Typography.titleMedium,
-            color = Color.Gray,
-            modifier = Modifier
-        )
-    }
-
-}
-
-
-@Composable
-fun ImagemTopo(modifier: Modifier = Modifier) {
-    Row(Modifier, verticalAlignment = Alignment.CenterVertically){
-        Image(
-            painter = painterResource(R.drawable.pigz_logo),
-            contentDescription = null,
-            modifier = modifier.height(20.dp).width(39.73.dp),
-        )
-        Text("Comanda", color = laranja)
-    }
-
-}
-
-@Composable
-fun TopBar(modifier: Modifier = Modifier) {
-    Spacer(modifier = Modifier.height(24.dp))
-    Column(
-        modifier = Modifier
-            .fillMaxWidth().height(56.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceEvenly
-
-    ) {
-        ImagemTopo()
-    }
-    HorizontalDivider(color = Color.LightGray, thickness = 1.dp)
-}
-
-@Composable
-fun Cards(texto: String, icon: ImageVector, onClick: () -> Unit) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(120.dp),
-        shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = neutro
-        ),
-        onClick = onClick,
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(10.dp),
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.Start
-        ) {
-            Icone(
-                imageVector = icon,
-                modifier = Modifier.size(32.dp),
-                contentDescription = texto
-            )
-            Text(text = texto)
-        }
-    }
-}
-
-@Composable
-fun CardsSheet(
-    texto: String,
-    iconeEsquerda: ImageVector,
-    iconeDireita: ImageVector,
-    onClick: () -> Unit
-) {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(8.dp),
-        colors = CardDefaults.cardColors(containerColor = neutro),
-        onClick = onClick
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Icone(
-                imageVector = iconeEsquerda,
-                modifier = Modifier.size(24.dp),
-                contentDescription = texto
-            )
-            Text(
-                texto,
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(horizontal = 16.dp)
-            )
-
-            Icone(
-                imageVector = iconeDireita,
-                modifier = Modifier.size(24.dp),
-                contentDescription = texto
-            )
-        }
-    }
-}
-
 @Composable
 fun MenuGrid(
     modifier: Modifier = Modifier,
@@ -293,54 +155,24 @@ fun MenuGrid(
         modifier = modifier.padding(start = 15.dp, end = 15.dp)
     ) {
         item {
-
-            Cards(
+            CardsMenu(
                 "Novo Pedido",
                 icon = ImageVector.vectorResource(id = R.drawable.add_icon),
                 onClick = onNovoPedidoClick,
             )
         }
         item {
-            Cards(
+            CardsMenu(
                 "Mapa de atendimento",
                 icon = ImageVector.vectorResource(id = R.drawable.map_icon),
-                onClick = { onNavigate("mapaAtendimento") },
+                onClick = { onNavigate("MapScreen") },
             )
-        }
+        }                                                
         item {
-            Cards(
+            CardsMenu(
                 "Configurações",
                 icon = ImageVector.vectorResource(id = R.drawable.settings_icon),
-                onClick = { onNavigate("configuracaoTela") },
-            )
-        }
-    }
-}
-
-@Composable
-@OptIn(ExperimentalMaterial3Api::class)
-fun NovoPedidoBottomSheet(
-    showSheet: Boolean,
-    onDismissRequest: () -> Unit,
-    content: @Composable ColumnScope.() -> Unit
-) {
-    val sheetState = rememberModalBottomSheetState(
-        skipPartiallyExpanded = true
-    )
-    //val scope = rememberCoroutineScope()
-
-    if (showSheet) {
-        ModalBottomSheet(
-            onDismissRequest = onDismissRequest,
-            sheetState = sheetState,
-            containerColor = Color.White
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                horizontalAlignment = Alignment.Start,
-                content = content
+                onClick = { onNavigate("ConfigurationPage") },
             )
         }
     }

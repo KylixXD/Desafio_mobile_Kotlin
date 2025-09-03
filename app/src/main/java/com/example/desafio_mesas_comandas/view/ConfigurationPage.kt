@@ -5,6 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 
 @Composable
-fun ConfiguracaoTela(navController: NavController) {
+fun ConfigurationPage(navController: NavController) {
     Text("Tela de Configuração")
 }

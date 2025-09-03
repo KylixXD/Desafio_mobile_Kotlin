@@ -8,11 +8,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.desafio_mesas_comandas.ui.theme.Desafio_mesas_comandasTheme
-import com.example.desafio_mesas_comandas.view.Balcao
-import com.example.desafio_mesas_comandas.view.ConfiguracaoTela
+import com.example.desafio_mesas_comandas.view.ConfigurationPage
 import com.example.desafio_mesas_comandas.view.HomePage
-import com.example.desafio_mesas_comandas.view.MapaAtendimento
-import com.example.desafio_mesas_comandas.view.MesaComanda
+import com.example.desafio_mesas_comandas.view.MapScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -23,33 +21,21 @@ class MainActivity : ComponentActivity() {
             Desafio_mesas_comandasTheme (dynamicColor = false){
                 val navController = rememberNavController()
 
-                NavHost(navController = navController, startDestination = "telaInicial"){
+                NavHost(navController = navController, startDestination = "HomePage"){
                     composable(
-                        route = "telaInicial"
+                        route = "HomePage"
                     ){
                         HomePage(navController = navController)
                     }
 
                     composable(
-                        route = "mapaAtendimento"
+                        route = "MapScreen"
                     ){
-                        MapaAtendimento(navController = navController)
+                        MapScreen(navController = navController)
                     }
 
-                    composable (route = "configuracaoTela") {
-                        ConfiguracaoTela(navController)
-                    }
-
-                    composable(
-                        route = "mesaComanda"
-                    ){
-                        MesaComanda(navController = navController)
-                    }
-
-                    composable(
-                        route = "balcaoComanda"
-                    ){
-                        Balcao(navController = navController)
+                    composable (route = "ConfigurationPage") {
+                        ConfigurationPage(navController)
                     }
 
                 }
@@ -58,6 +44,4 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-
 
