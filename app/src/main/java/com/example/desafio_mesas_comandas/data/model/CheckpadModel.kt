@@ -5,7 +5,7 @@ data class CheckpadApiResponse(
     val total: Int,
     val withOrderSheet: Int,
     val withoutOrderSheet: Int,
-    val checkpads: Checkpad
+    val checkpads: List<Checkpad>?
 )
 
 data class CheckpadTotal(
@@ -18,17 +18,17 @@ data class CheckpadTotal(
 data class OrderSheet(
     val id: Int,
     val info: String?,
-    val user: String?,
+    val user: User?,
     val opened: String,
     val seller: Seller?,
     val contact: String,
     val hasPaid: Boolean,
-    val customer: String?,
+    val customer: Customer?,
     val idleTime: Int,
     val subtotal: Double,
     val hasOrders: Boolean,
     val customerName: String?,
-    val lastOrderCreated: String,
+    val lastOrderCreated: String?,
     val numberOfCustomers: Int?
 )
 
@@ -53,8 +53,32 @@ data class Checkpad(
     val hasOrder: Boolean,
     val idleTime: Int,
     val activity: String,
-    val pdvDevices: PdvDevices,
-    val orderSheets: OrderSheet
+    val pdvDevices: List<PdvDevices>?,
+    val orderSheets: List<OrderSheet>?
+)
+
+data class User(
+    val id: Int,
+    val name: String
+)
+
+data class Customer(
+    val id: Int,
+    val doc: String?,
+    val name: String,
+    val email: String?,
+    val phone: String,
+    val status: Int,
+    val birthDate: String?,
+    val additionalPhone: String?,
+    val customerAccount: CustomerAccount?
+)
+
+data class CustomerAccount(
+    val status: Int,
+    val creditLimit: Int,
+    val currentBalance: Int,
+    val allowOnCustomerAccount: Int
 )
 
 

@@ -72,9 +72,17 @@ fun MapPage(onBackClick: () -> Unit) {
         val result = withContext(Dispatchers.IO) {
             ReadJson.readJsonMock(context, "Mock.json")
         }
-
         apiResponse = result
     }
+
+//    val mesas = apiResponse?.checkpads
+//    if (mesas != null) {
+//        // Assign apiResponse to a new variable
+//        val response = apiResponse
+//        if (response != null) {
+//            MesasGrid(mesas = response) // 'response' is now smart-cast to CheckpadApiResponse
+//        }
+//    }
 
 //    apiResponse?.checkpadApiResponse?.checkpad?.let { mesas ->
 //        MesasGrid(mesas = mesas)
@@ -131,13 +139,18 @@ fun MapPage(onBackClick: () -> Unit) {
         )
         HorizontalDivider(color = Color.LightGray, thickness = 1.dp)
         Filtros()
-//        MesasGrid()
-        val mesas = apiResponse?.checkpads
 
-        if (mesas != null) {
-//            MesasGrid(mesas = mesas)
-        } else {
-            CircularProgressIndicator()
+        apiResponse?.let { response ->
+            // Pass the entire response object to MesasGrid
+            MesasGrid(mesas = response)
+        } ?: run {
+            // Show a loading indicator if the response is null
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator()
+            }
         }
     }
 
@@ -184,6 +197,15 @@ fun MesasGrid(mesas: CheckpadApiResponse, modifier: Modifier = Modifier) {
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         modifier = modifier.padding(start = 15.dp, end = 15.dp)
     ) {
+        mesas.checkpads?.let { checkpadsList ->
+            items(
+                items = checkpadsList,
+                key = { checkpad -> checkpad.id }
+            ) { checkpad ->
+                // Pass the current checkpad object to the CardMesa composable
+                CardMesa(mesa = checkpad)
+            }
+        }
 //        mesas.checkpads?.let{ checkpads ->
 //            items(
 //                items(20), key({
@@ -218,6 +240,8 @@ fun CardMesa(mesa: Checkpad) {
 //        dados = ReadJson.readJsonMock(context, "Mock.json")
 //    }
 
+//    val firstOrderSheet = mesa.orderSheets?.first
+
     Card(
         modifier = Modifier
             .width(109.33.dp)
@@ -227,26 +251,25 @@ fun CardMesa(mesa: Checkpad) {
     ) {
         Box(Modifier.fillMaxSize()) {
             Column {
-                Box {
+                    Text(mesa.title)
+
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icone(imageVector = ImageVector.vectorResource(id = R.drawable.account_circle))
-                        Text(mesa.title)
+//                        Text(mesa.orderSheets?.)
                     }
 
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icone(imageVector = ImageVector.vectorResource(id = R.drawable.schedule))
-//                        Text(mesa.)
+//                        Text(mesa.idleTime.toString())
                     }
-//                    Row(verticalAlignment = Alignment.CenterVertically) {
-//                        Icone(imageVector = ImageVector.vectorResource(id = R.drawable.paid))
-//                        Text(preco.toString())
-//                    }
-//                    Row(verticalAlignment = Alignment.CenterVertically) {
-//                        Icone(imageVector = ImageVector.vectorResource(id = R.drawable.room_service))
-//                        Text(waiter)
-//                    }
-                }
-
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icone(imageVector = ImageVector.vectorResource(id = R.drawable.paid))
+//                        Text() preco total
+                    }
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icone(imageVector = ImageVector.vectorResource(id = R.drawable.room_service))
+//                        Text(waiter) usuario ou Vendedor
+                    }
             }
         }
     }
