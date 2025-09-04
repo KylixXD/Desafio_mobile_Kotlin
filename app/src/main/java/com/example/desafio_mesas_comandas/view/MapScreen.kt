@@ -12,10 +12,12 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
@@ -28,7 +30,9 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -36,22 +40,48 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.desafio_mesas_comandas.R
+import com.example.desafio_mesas_comandas.data.model.Checkpad
+import com.example.desafio_mesas_comandas.data.model.CheckpadApiResponse
+//import com.example.desafio_mesas_comandas.data.model.CheckpadTotal
+import com.example.desafio_mesas_comandas.data.model.OrderSheet
 import com.example.desafio_mesas_comandas.ui.theme.laranja
+import com.example.desafio_mesas_comandas.utils.ReadJson
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+
 
 @Composable
 fun MapScreen(navController: NavController) {
-    ParteCimaApp(onBackClick = { navController.popBackStack() })
+    MapPage(onBackClick = { navController.popBackStack() })
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ParteCimaApp(onBackClick: () -> Unit) {
+fun MapPage(onBackClick: () -> Unit) {
+    val context = LocalContext.current
+    var apiResponse by remember { mutableStateOf<CheckpadApiResponse?>(null) }
+
+    LaunchedEffect(key1 = Unit) {
+        val result = withContext(Dispatchers.IO) {
+            ReadJson.readJsonMock(context, "Mock.json")
+        }
+
+        apiResponse = result
+    }
+
+//    apiResponse?.checkpadApiResponse?.checkpad?.let { mesas ->
+//        MesasGrid(mesas = mesas)
+//    } ?: run {
+//        CircularProgressIndicator()
+//    }
+
     Column(modifier = Modifier.fillMaxSize()) {
         TopAppBar(
             title = { Text("Mapa de atendimento") },
@@ -101,7 +131,14 @@ fun ParteCimaApp(onBackClick: () -> Unit) {
         )
         HorizontalDivider(color = Color.LightGray, thickness = 1.dp)
         Filtros()
-        MesasGrid()
+//        MesasGrid()
+        val mesas = apiResponse?.checkpads
+
+        if (mesas != null) {
+//            MesasGrid(mesas = mesas)
+        } else {
+            CircularProgressIndicator()
+        }
     }
 
 }
@@ -109,14 +146,14 @@ fun ParteCimaApp(onBackClick: () -> Unit) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Filtros(modifier: Modifier = Modifier) {
-    val items = listOf("Visão Geral", "Em Atendimento", "Ociosas", "Disponíveis")
-    var selectedItem by remember { mutableStateOf(items.first()) }
+    val filtros = listOf("Visão Geral", "Em Atendimento", "Ociosas", "Disponíveis")
+    var selectedItem by remember { mutableStateOf(filtros.first()) }
 
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier.padding(8.dp)
     ) {
-        items(items) { item ->
+        items(filtros) { item ->
             val isSelected = (item == selectedItem)
 
             FilterChip(
@@ -140,89 +177,94 @@ fun Filtros(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun MesasGrid(modifier: Modifier = Modifier) {
+fun MesasGrid(mesas: CheckpadApiResponse, modifier: Modifier = Modifier) {
     LazyVerticalGrid(
         GridCells.Fixed(3),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         modifier = modifier.padding(start = 15.dp, end = 15.dp)
     ) {
-        item {
-            CardMesa(
-                1,
-                "Ciclano",
-                10.0,
-                35.10,
-                "Rafael"
-            )
-        }
-        item {
-            CardMesa(2,
-                "Fulano",
-                10.00,
-                10.00,
-                "Rafael"
-            )
-        }
-        item {
-            CardMesa(3,
-                "Beltrano",
-                10.0,
-                3.10,
-                "Rafael"
-            )
-        }
+//        mesas.checkpads?.let{ checkpads ->
+//            items(
+//                items(20), key({
+//                    checkpad -> checkpads.id
+//                })
+//            )
+//        }
+//        items(20) {  ->
+//           CardMesa()
+//        }
+
+//        item {
+//            CardMesa(
+//
+////                    1,
+////                    "Ciclano",
+////                    10.0,
+////                    35.10,
+////                    "Rafael"
+//            )
+//        }
     }
 }
 
+
 @Composable
-fun CardMesa(numMesa: Int, nomeCliente: String, tempo: Double, preco: Double, waiter: String) {
+fun CardMesa(mesa: Checkpad) {
+//    val context = LocalContext.current
+//    var dados by remember { mutableStateOf<CheckpadTotal?>(null) }
+//
+//    LaunchedEffect(key1 = Unit) {
+//        dados = ReadJson.readJsonMock(context, "Mock.json")
+//    }
+
     Card(
         modifier = Modifier
             .width(109.33.dp)
             .height(116.dp),
         shape = RoundedCornerShape(8.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.Red),
+        colors = CardDefaults.cardColors(containerColor = Color.Gray),
     ) {
         Box(Modifier.fillMaxSize()) {
             Column {
                 Box {
-                    Text(numMesa.toString(), fontSize = 24.sp)
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icone(imageVector = ImageVector.vectorResource(id = R.drawable.account_circle))
+                        Text(mesa.title)
+                    }
+
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icone(imageVector = ImageVector.vectorResource(id = R.drawable.schedule))
+//                        Text(mesa.)
+                    }
+//                    Row(verticalAlignment = Alignment.CenterVertically) {
+//                        Icone(imageVector = ImageVector.vectorResource(id = R.drawable.paid))
+//                        Text(preco.toString())
+//                    }
+//                    Row(verticalAlignment = Alignment.CenterVertically) {
+//                        Icone(imageVector = ImageVector.vectorResource(id = R.drawable.room_service))
+//                        Text(waiter)
+//                    }
                 }
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icone(imageVector = ImageVector.vectorResource(id = R.drawable.account_circle))
-                    Text(nomeCliente)
-                }
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icone(imageVector = ImageVector.vectorResource(id = R.drawable.schedule))
-                    Text(tempo.toString())
-                }
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icone(imageVector = ImageVector.vectorResource(id = R.drawable.paid))
-                    Text(preco.toString())
-                }
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icone(imageVector = ImageVector.vectorResource(id = R.drawable.room_service))
-                    Text(waiter)
-                }
+
             }
         }
-
     }
 
 }
+
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun MapaAtendimentoPreview() {
     Column {
-        ParteCimaApp(onBackClick = {})
+        MapPage(onBackClick = {})
     }
 
 }
-
-@Preview
-@Composable
-private fun CardMesaPreview() {
-    CardMesa(1, "Ciclano", 10.00, 35.10, "Rafael")
-}
+//@Preview
+//@Composable
+//private fun CardMesaPreview() {
+//    CardMesa()
+//}
+//
