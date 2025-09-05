@@ -65,7 +65,6 @@ fun TelaInicial(navController: NavController, modifier: Modifier = Modifier) {
 
     HeaderHome()
     TitleHome("Rafael Nóbrega", "Sei la Restaurante")
-//    TituloPage()
     MenuGrid(
         onNovoPedidoClick = { showBottomSheet = true },
         onNavigate = { route -> navController.navigate(route) }

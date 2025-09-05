@@ -18,10 +18,10 @@ data class OrderSheet(
     val hasPaid: Boolean,
     val customer: Customer?,
     val idleTime: Int,
-    val subtotal: Double,
+    val subtotal: Int,
     val hasOrders: Boolean,
     val customerName: String?,
-    val lastOrderCreated: String?,
+    val lastOrderCreated: String? = null,
     val numberOfCustomers: Int?
 )
 
@@ -46,8 +46,8 @@ data class Checkpad(
     val hasOrder: Boolean,
     val idleTime: Int,
     val activity: String,
-    val pdvDevices: List<PdvDevices>?,
-    val orderSheets: List<OrderSheet>
+    val pdvDevices: List<PdvDevices> = emptyList(),
+    val orderSheets: List<OrderSheet> = emptyList()
 )
 
 data class User(
@@ -62,9 +62,9 @@ data class Customer(
     val email: String?,
     val phone: String,
     val status: Int,
-    val birthDate: String?,
-    val additionalPhone: String?,
-    val customerAccount: CustomerAccount?
+    val birthDate: String? = null,
+    val additionalPhone: String? = null,
+    val customerAccount: CustomerAccount? = null
 )
 
 data class CustomerAccount(

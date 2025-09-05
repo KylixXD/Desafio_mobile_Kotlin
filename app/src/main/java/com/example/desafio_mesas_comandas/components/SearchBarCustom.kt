@@ -20,7 +20,7 @@ import com.example.desafio_mesas_comandas.ui.theme.laranja
 @Composable
 fun SearchBarCustom(
     value: String,
-    onValueChange: (String) -> Unit
+    onValueChange: (String) -> Unit,
 ) {
     OutlinedTextField(
         value = value,
