@@ -8,13 +8,6 @@ data class CheckpadApiResponse(
     val checkpads: List<Checkpad>?
 )
 
-data class CheckpadTotal(
-    val seller: Seller,
-    val checkpad: Checkpad,
-    val checkpadResponse: CheckpadApiResponse,
-    val orderSheet: OrderSheet
-)
-
 data class OrderSheet(
     val id: Int,
     val info: String?,
@@ -46,7 +39,7 @@ data class Checkpad(
     val id: Int,
     val status: Boolean,
     val hash: String,
-    val title: String,
+    val title: Int,
     val hasPdv: Boolean,
     val lastOrderCreated: String,
     val hasOrderSheets: Boolean,
@@ -54,7 +47,7 @@ data class Checkpad(
     val idleTime: Int,
     val activity: String,
     val pdvDevices: List<PdvDevices>?,
-    val orderSheets: List<OrderSheet>?
+    val orderSheets: List<OrderSheet>
 )
 
 data class User(
