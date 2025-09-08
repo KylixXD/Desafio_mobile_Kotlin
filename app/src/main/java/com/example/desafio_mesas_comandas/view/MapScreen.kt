@@ -27,6 +27,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -40,8 +41,7 @@ import androidx.navigation.NavController
 import com.example.desafio_mesas_comandas.R
 import com.example.desafio_mesas_comandas.components.SearchBarCustom
 import com.example.desafio_mesas_comandas.components.TopBarCustom
-import com.example.desafio_mesas_comandas.data.model.Checkpad
-import com.example.desafio_mesas_comandas.data.model.CheckpadApiResponse
+import com.example.desafio_mesas_comandas.data.local.TableEntity
 import com.example.desafio_mesas_comandas.ui.theme.Typography
 import com.example.desafio_mesas_comandas.ui.theme.amarelo
 import com.example.desafio_mesas_comandas.ui.theme.neutro
@@ -60,21 +60,20 @@ fun MapScreen(modifier: Modifier = Modifier, navController: NavController) {
     }
 }
 
-//@Composable
-//fun MapScreen(navController: NavController) {
-//    MapPage(onBackClick = { navController.popBackStack() })
-//}
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MapPage(
     onBackClick: () -> Unit,
     viewModel: MapViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+
 ) {
-    val mesas by viewModel.mesas.collectAsState()
+    val mesas by viewModel.mesas.collectAsState(initial = emptyList())
     val isLoading by viewModel.isLoading.collectAsState()
     val searchText by viewModel.searchText.collectAsState()
-    val selectedFilter by viewModel.selectedFilter.collectAsState()
+    val selectedFilter by viewModel.selectedFilterName.collectAsState()
+    LaunchedEffect(mesas) {
+        println("DEBUG mesas carregadas: ${mesas.size}")
+    }
 
     Column {
         TopBarCustom("Mapa de atendimento", onBackClick)
@@ -96,7 +95,8 @@ fun MapPage(
     }
     Column(
         modifier = Modifier
-            .background(neutro).padding(bottom = 48.dp)
+            .background(neutro)
+            .padding(bottom = 48.dp)
     ) {
 
         Filtros(
@@ -111,7 +111,7 @@ fun MapPage(
             }
         } else {
             mesas?.let {
-                MesasGrid(mesas = it)
+                MesasGrid(mesas = mesas)
             }
         }
 
@@ -153,27 +153,34 @@ fun Filtros(
 }
 
 @Composable
-fun MesasGrid(mesas: CheckpadApiResponse, modifier: Modifier = Modifier) {
+fun MesasGrid(mesas: List<TableEntity>, modifier: Modifier = Modifier) {
     LazyVerticalGrid(
-        GridCells.Fixed(3),
+        columns = GridCells.Fixed(3),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         modifier = modifier.padding(start = 15.dp, end = 15.dp)
     ) {
-        mesas.checkpads?.let { checkpadsList ->
-            items(
-                items = checkpadsList,
-                key = { checkpad -> checkpad.id }
-            ) { checkpad ->
-                CardMesa(checkpad)
-            }
+        items(
+            items = mesas,
+            key = { mesa -> mesa.id }
+        ) { mesa ->
+            CardMesa(mesa)
         }
     }
+
 }
+
+//        mesas.checkpads?.let { checkpadsList ->
+//            items(
+//                items = checkpadsList,
+//                key = { checkpad -> checkpad.id }
+//            ) { checkpad ->
+//                CardMesa(checkpad)
+//            }
 
 
 @Composable
-fun CardMesa(mesa: Checkpad) {
+fun CardMesa(mesa: TableEntity) {
     val Activitycolor = mesa.activity
     val backgroundColors = when (Activitycolor) {
         "inactive" -> vermelho
@@ -210,31 +217,29 @@ fun CardMesa(mesa: Checkpad) {
                             Modifier.padding(),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            if (mesa.orderSheets.isNotEmpty()) {
+                            if (mesa.orderCount > 0) {
                                 Icone(imageVector = ImageVector.vectorResource(id = R.drawable.receipt))
                                 Text(
-                                    mesa.orderSheets.size.toString(),
+                                    mesa.orderCount.toString(),
                                     style = Typography.labelSmall
                                 )
                                 Spacer(modifier = Modifier.width(8.dp))
                             }
 
-                            val numberOfCostumers =
-                                mesa.orderSheets.firstOrNull()?.numberOfCustomers ?: 0
-                            val customerName = mesa.orderSheets.firstOrNull()?.customerName
-
+                            val customerName = mesa.customerName
+                            val orderCount = mesa.orderCount
                             when {
-                                numberOfCostumers == 1 && !customerName.isNullOrEmpty() -> {
+                                orderCount == 1 && !customerName.isNullOrEmpty() -> {
                                     Icone(imageVector = ImageVector.vectorResource(id = R.drawable.account_circle))
                                     Spacer(modifier = Modifier.width(4.dp))
                                     Text(customerName, style = Typography.labelSmall)
                                 }
 
-                                numberOfCostumers > 1 -> {
+                                orderCount > 1 -> {
                                     Icone(imageVector = ImageVector.vectorResource(id = R.drawable.account_circle))
                                     Spacer(modifier = Modifier.width(4.dp))
                                     Text(
-                                        numberOfCostumers.toString(),
+                                        orderCount.toString(),
                                         style = Typography.labelSmall
                                     )
                                 }
@@ -255,7 +260,7 @@ fun CardMesa(mesa: Checkpad) {
                         }
 
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            val subtotal = mesa.orderSheets.firstOrNull()?.subtotal
+                            val subtotal = mesa.subTotal
 
                             Icone(imageVector = ImageVector.vectorResource(id = R.drawable.paid))
                             Text("R$ " + subtotal, style = Typography.labelSmall)
@@ -264,7 +269,7 @@ fun CardMesa(mesa: Checkpad) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icone(imageVector = ImageVector.vectorResource(id = R.drawable.room_service))
                             Text(
-                                "${mesa.orderSheets.firstOrNull()?.seller?.name}",
+                                "${mesa.sellerName}",
                                 style = Typography.labelSmall
                             )
                         }

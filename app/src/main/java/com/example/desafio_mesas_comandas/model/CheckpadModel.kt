@@ -1,4 +1,4 @@
-package com.example.desafio_mesas_comandas.data.model
+package com.example.desafio_mesas_comandas.model
 
 // data class com referencia a todos os outros dataclasses
 data class CheckpadApiResponse(

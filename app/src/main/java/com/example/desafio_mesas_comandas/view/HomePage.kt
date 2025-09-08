@@ -166,7 +166,7 @@ fun MenuGrid(
                 icon = ImageVector.vectorResource(id = R.drawable.map_icon),
                 onClick = { onNavigate("MapScreen") },
             )
-        }                                                
+        }
         item {
             CardsMenu(
                 "Configurações",
@@ -177,10 +177,5 @@ fun MenuGrid(
     }
 }
 
-@Preview(showSystemUi = true)
-@Composable
-private fun HomePagePreview() {
-    val navController = rememberNavController()
-    HomePage(navController = navController)
-}
+
 

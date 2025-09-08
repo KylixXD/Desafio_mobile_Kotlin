@@ -1,54 +1,90 @@
 package com.example.desafio_mesas_comandas.viewmodel
 
+import TableRepository
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.desafio_mesas_comandas.data.model.Checkpad
-import com.example.desafio_mesas_comandas.data.model.CheckpadApiResponse
+import com.example.desafio_mesas_comandas.data.local.TableEntity
 import com.example.desafio_mesas_comandas.utils.ReadJson
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MapViewModel(application: Application) : AndroidViewModel(application) {
-    private val _mesas = MutableStateFlow<CheckpadApiResponse?>(null)
-    val mesas: StateFlow<CheckpadApiResponse?> = _mesas
+    private val repository = TableRepository(application)
+
+    private val _mesas = MutableStateFlow<List<TableEntity>>(emptyList())
+    val mesas: StateFlow<List<TableEntity>> = _mesas.asStateFlow()
 
     private val _isLoading = MutableStateFlow(false)
-    val isLoading: StateFlow<Boolean> = _isLoading
+    val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
 
     private val _searchText = MutableStateFlow("")
-    val searchText: StateFlow<String> = _searchText
+    val searchText: StateFlow<String> = _searchText.asStateFlow()
 
-    //    private val _selectedFilter = MutableStateFlow<>
-    private val _selectedFilter = MutableStateFlow("Visão Geral")
-    val selectedFilter: StateFlow<String> = _selectedFilter
+    private val _selectedFilterName = MutableStateFlow("Visão Geral")
+    val selectedFilterName: StateFlow<String> = _selectedFilterName.asStateFlow()
+
+    private val _queryFilter = MutableStateFlow<String?>(null)
 
 
     init {
-        loadMock()
+        loadTables()
+        applyFilters()
     }
 
-    fun loadMock() {
+    fun loadTables() {
         viewModelScope.launch {
-            _isLoading.value = true
-            try {
-                val result = ReadJson.readJsonMock(getApplication(), "Mock.json")
-                _mesas.value = result
-            } catch (e: Exception) {
-                e.printStackTrace()
-            } finally {
-                _isLoading.value = false
+            repository.tableCount().let { count ->
+                if (count == 0) {
+                    _isLoading.value = true
+                    withContext(Dispatchers.IO) {
+                        val context = getApplication<Application>()
+                        val mockTables: List<TableEntity> =
+                            ReadJson.readJsonMock(context, "mock.json")
+                        repository.upsertAll(mockTables)
+                    }
+                    _isLoading.value = false
+                }
             }
         }
     }
 
+
     fun updateSearch(text: String) {
         _searchText.value = text
+        applyFilters()
     }
 
-    fun updateFilter(filter: String) {
-        _selectedFilter.value = filter
+    fun updateFilter(filterName: String) {
+        _selectedFilterName.value = filterName
+
+        _queryFilter.value = when (filterName) {
+            "Visão Geral" -> null
+            "Em Atendimento" -> "active"
+            "Ociosas" -> "inactive"
+            "Disponíveis" -> "empty"
+            "Sem Pedidos" -> "waiting"
+            else -> null
+        }
+        applyFilters()
     }
 
+    private fun applyFilters() {
+        viewModelScope.launch {
+            val searchTextQuery = _searchText.value.ifBlank { null }
+            val activityTypeQuery = _queryFilter.value
+
+            repository.getFilteredTables(
+                searchText = searchTextQuery,
+                activityType = activityTypeQuery
+            ).collect { filtered ->
+                _mesas.value = filtered
+            }
+        }
+
+    }
 }
