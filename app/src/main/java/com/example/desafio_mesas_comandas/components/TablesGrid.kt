@@ -3,15 +3,20 @@ package com.example.desafio_mesas_comandas.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Paid
+import androidx.compose.material.icons.filled.Receipt
+import androidx.compose.material.icons.filled.RoomService
+import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,6 +35,12 @@ fun TablesGrid(
     gridState: LazyGridState,
     modifier: Modifier = Modifier
 ) {
+    val receiptIcon = Icons.Default.Receipt
+    val accountCircleIcon = Icons.Default.AccountCircle
+    val scheduleIcon = Icons.Default.Schedule
+    val paidIcon = Icons.Default.Paid
+    val roomServiceIcon = Icons.Default.RoomService
+
     Box(modifier = modifier.fillMaxSize()) {
         if (lazyPagingItems.loadState.refresh is LoadState.Error) {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -42,17 +53,24 @@ fun TablesGrid(
             LazyVerticalGrid(
                 state = gridState,
                 columns = GridCells.Fixed(3),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                contentPadding = PaddingValues(start = 8.dp, end = 8.dp, bottom = 34.dp)
 
             ) {
                 items(
                     count = lazyPagingItems.itemCount,
-                    key = { index -> lazyPagingItems.peek(index)?.id ?: index }
+                    key = { index -> lazyPagingItems[index]?.id ?: index }
                 ) { index ->
-                    val mesa = lazyPagingItems[index]
-                    mesa?.let {
-                        CardTable(it)
+                    lazyPagingItems[index]?.let { mesa ->
+                        CardTable(
+                            mesa = mesa,
+                            receiptIcon = receiptIcon,
+                            accountCircleIcon = accountCircleIcon,
+                            scheduleIcon = scheduleIcon,
+                            paidIcon = paidIcon,
+                            roomServiceIcon = roomServiceIcon
+                        )
                     }
                 }
 

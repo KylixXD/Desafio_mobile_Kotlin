@@ -23,6 +23,8 @@ class TableRepository(private val application: Application) {
         return Pager(
             config = PagingConfig(
                 pageSize = 20,
+                prefetchDistance = 10,
+                initialLoadSize = 60,
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {

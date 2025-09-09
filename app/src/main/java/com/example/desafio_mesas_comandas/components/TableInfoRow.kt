@@ -2,6 +2,7 @@ package com.example.desafio_mesas_comandas.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -24,7 +25,8 @@ fun TableInfoRow(
     ) {
         Icon(
             imageVector = icon,
-            contentDescription = null
+            contentDescription = null,
+            Modifier.size(10.dp)
         )
         Spacer(Modifier.width(4.dp))
         Text(text, style = Typography.labelSmall, maxLines = 1)

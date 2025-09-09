@@ -1,8 +1,8 @@
 package com.example.desafio_mesas_comandas.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -41,13 +41,15 @@ fun SearchBarCustom(
             focusedContainerColor = Color.Transparent,
             unfocusedContainerColor = Color.Transparent,
             disabledContainerColor = Color.Transparent,
-            focusedIndicatorColor = Color.Transparent,
+            focusedIndicatorColor = laranja,
             unfocusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent,
-            cursorColor = laranja
-//                focusedPlaceholderColor = Color.Transparent,
-//                unfocusedPlaceholderColor = Color.Transparent,
-//                disabledPlaceholderColor = Color.Transparent
+            cursorColor = laranja,
+            selectionColors = TextSelectionColors(
+                handleColor = laranja,
+                backgroundColor = laranja.copy(alpha = 0.4f)
+            )
+
         )
     )
 }
