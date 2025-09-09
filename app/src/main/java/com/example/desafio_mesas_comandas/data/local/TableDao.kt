@@ -13,7 +13,7 @@ interface TableDao {
 
     @Query(
         """
-        SELECT * FROM tables
+        SELECT * FROM `CheckPad Tables`
         WHERE (:searchText IS NULL 
                OR CAST(title AS TEXT) LIKE '%' || :searchText || '%' 
                OR customerName LIKE '%' || :searchText || '%' 
@@ -30,7 +30,7 @@ interface TableDao {
 
     @Query(
         """
-        SELECT * FROM tables
+        SELECT * FROM `CheckPad Tables`
         WHERE (title LIKE '%' || :q || '%' OR customerName LIKE '%' || :q || '%')
           AND (activity = :statusFilter)
         ORDER BY title ASC
@@ -41,10 +41,10 @@ interface TableDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsertAll(items: List<TableEntity>)
 
-    @Query("SELECT * FROM tables ORDER BY title ASC")
+    @Query("SELECT * FROM `CheckPad Tables` ORDER BY title ASC")
     fun getAll(): Flow<List<TableEntity>>
 
-    @Query("SELECT COUNT(id) FROM tables")
+    @Query("SELECT COUNT(id) FROM `CheckPad Tables`")
     suspend fun tableCount(): Int
 
 

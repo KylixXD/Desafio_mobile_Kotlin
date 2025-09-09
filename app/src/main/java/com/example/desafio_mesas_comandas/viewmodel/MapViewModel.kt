@@ -59,7 +59,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                     withContext(Dispatchers.IO) {
                         val context = getApplication<Application>()
                         val mockTables: List<TableEntity> =
-                            ReadJson.readJsonMock(context, "mock_60mesas.json")
+                            ReadJson.readJsonMock(context, "Mock.json")
                         repository.upsertAll(mockTables)
                     }
                     _isLoading.value = false

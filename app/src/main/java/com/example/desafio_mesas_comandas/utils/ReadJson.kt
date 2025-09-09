@@ -34,7 +34,8 @@
                         customerName = checkpad.orderSheets.firstOrNull()?.customerName,
                         idleTime = checkpad.idleTime,
                         subTotal = checkpad.orderSheets.firstOrNull()?.subtotal,
-                        sellerName = sellerName
+                        sellerName = sellerName,
+                        numberCustomer = checkpad.orderSheets.firstOrNull()?.numberOfCustomers
                     )
                 } ?: emptyList()
             } catch (e: Exception) {
