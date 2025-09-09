@@ -1,12 +1,12 @@
 package com.example.desafio_mesas_comandas.viewmodel
 
-import TableRepository
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.desafio_mesas_comandas.data.local.TableEntity
+import com.example.desafio_mesas_comandas.data.repository.TableRepository
 import com.example.desafio_mesas_comandas.utils.ReadJson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -45,10 +45,8 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
     }.cachedIn(viewModelScope)
 
 
-
     init {
         loadTables()
-//        applyFilters()
     }
 
     fun loadTables() {
@@ -71,7 +69,6 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
 
     fun updateSearch(text: String) {
         _searchText.value = text
-//        applyFilters()
     }
 
     fun updateFilter(filterName: String) {
@@ -85,21 +82,5 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
             "Sem Pedidos" -> "waiting"
             else -> null
         }
-//        applyFilters()
     }
-
-//    private fun applyFilters() {
-//        viewModelScope.launch {
-//            val searchTextQuery = _searchText.value.ifBlank { null }
-//            val activityTypeQuery = _queryFilter.value
-//
-//            repository.getFilteredTables(
-//                searchText = searchTextQuery,
-//                activityType = activityTypeQuery
-//            ).collect { filtered ->
-//                _mesas.value = filtered
-//            }
-//        }
-//
-//    }
 }

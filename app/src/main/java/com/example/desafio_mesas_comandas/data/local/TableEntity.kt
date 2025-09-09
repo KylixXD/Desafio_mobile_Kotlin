@@ -5,7 +5,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.example.desafio_mesas_comandas.model.Customer
 
-@Entity(tableName = "CheckPad Tables", indices = [Index("title", unique = true)])
+@Entity(tableName = "CheckPad_Tables", indices = [Index("title", unique = true)])
 data class TableEntity(
     @PrimaryKey val id: Int,
     val title: Int,

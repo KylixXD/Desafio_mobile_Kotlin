@@ -1,8 +1,9 @@
+package com.example.desafio_mesas_comandas.data.repository
+
 import android.app.Application
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.desafio_mesas_comandas.data.local.AppDatabase
 import com.example.desafio_mesas_comandas.data.local.TableEntity
 import kotlinx.coroutines.flow.Flow
 

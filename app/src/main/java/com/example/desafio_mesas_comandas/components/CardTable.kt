@@ -24,6 +24,7 @@ import com.example.desafio_mesas_comandas.ui.theme.Typography
 import com.example.desafio_mesas_comandas.ui.theme.amarelo
 import com.example.desafio_mesas_comandas.ui.theme.verde
 import com.example.desafio_mesas_comandas.ui.theme.vermelho
+import com.example.desafio_mesas_comandas.utils.maskForIdleTime
 import com.example.desafio_mesas_comandas.utils.toBrazilianCurrencyFromCents
 
 @Composable
@@ -48,7 +49,7 @@ fun CardTable(mesa: TableEntity) {
         ) {
             Text(
                 text = "${mesa.title}",
-                style = Typography.labelMedium,
+                style = Typography.titleLarge,
                 modifier = Modifier.padding(start = 4.dp)
             )
 
@@ -72,17 +73,18 @@ fun CardTable(mesa: TableEntity) {
                     )
                     Spacer(modifier = Modifier.width(4.dp))
 
-                    val customerInfoText = if (mesa.numberCustomer == 1 && !mesa.customerName.isNullOrBlank()) {
-                        mesa.customerName
-                    } else {
-                        "${mesa.numberCustomer ?: 0}"
-                    }
+                    val customerInfoText =
+                        if (mesa.numberCustomer == 1 && !mesa.customerName.isNullOrBlank()) {
+                            mesa.customerName
+                        } else {
+                            "${mesa.numberCustomer ?: 0}"
+                        }
                     Text(text = customerInfoText, style = Typography.labelSmall, maxLines = 1)
                 }
 
                 TableInfoRow(
                     icon = ImageVector.vectorResource(id = R.drawable.schedule),
-                    text = "${mesa.idleTime} mins"
+                    text = mesa.idleTime.maskForIdleTime()
                 )
                 TableInfoRow(
                     icon = ImageVector.vectorResource(id = R.drawable.paid),

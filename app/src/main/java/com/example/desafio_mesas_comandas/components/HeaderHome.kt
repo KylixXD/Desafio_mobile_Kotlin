@@ -31,7 +31,7 @@ fun HeaderHome(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.SpaceEvenly
 
     ) {
-        Row(Modifier, verticalAlignment = Alignment.CenterVertically){
+        Row(Modifier, verticalAlignment = Alignment.CenterVertically) {
             Image(
                 painter = painterResource(R.drawable.pigz_logo),
                 contentDescription = null,

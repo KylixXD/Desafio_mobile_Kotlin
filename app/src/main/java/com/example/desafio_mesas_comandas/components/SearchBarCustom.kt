@@ -25,7 +25,7 @@ fun SearchBarCustom(
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
-        placeholder = { Text("Vendedor, mesa, comanda, atendente", fontSize = 15.sp) },
+        placeholder = { Text("Cliente, mesa, comanda, atendente", fontSize = 15.sp) },
         leadingIcon = {
             Icon(
                 imageVector = ImageVector.vectorResource(id = R.drawable.search_icon),
@@ -44,6 +44,7 @@ fun SearchBarCustom(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent,
+            cursorColor = laranja
 //                focusedPlaceholderColor = Color.Transparent,
 //                unfocusedPlaceholderColor = Color.Transparent,
 //                disabledPlaceholderColor = Color.Transparent

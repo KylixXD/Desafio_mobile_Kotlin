@@ -1,14 +1,13 @@
-package com.example.desafio_mesas_comandas.data.local
-
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.desafio_mesas_comandas.data.local.TableDao
+import com.example.desafio_mesas_comandas.data.local.TableEntity
 
-// 1. A versão do banco está correta: 3
-@Database(entities = [TableEntity::class], version = 3, exportSchema = false)
+@Database(entities = [TableEntity::class], version = 4, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun tableDao(): TableDao
@@ -17,12 +16,15 @@ abstract class AppDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
-        // 2. ESTA É A MIGRATION CORRETA E SIMPLIFICADA
-        // Ela apenas adiciona a nova coluna na tabela existente.
         val MIGRATION_2_3 = object : Migration(2, 3) {
             override fun migrate(db: SupportSQLiteDatabase) {
-                // Usamos o nome EXATO da tabela entre aspas para lidar com o espaço.
                 db.execSQL("ALTER TABLE `CheckPad Tables` ADD COLUMN numberCustomer INTEGER")
+            }
+        }
+
+        val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                 db.execSQL("ALTER TABLE `CheckPad Tables` RENAME TO `CheckPad_Tables`")
             }
         }
 
@@ -33,8 +35,8 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "Tables_Database.db"
                 )
-                    // 3. Adicionamos APENAS a migration necessária
-                    .addMigrations(MIGRATION_2_3)
+                    // 3. Adicione TODAS as migrations necessárias em ordem
+                    .addMigrations(MIGRATION_2_3, MIGRATION_3_4)
                     .build()
 
                 INSTANCE = instance

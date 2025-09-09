@@ -1,6 +1,5 @@
 package com.example.desafio_mesas_comandas.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -20,6 +19,8 @@ private val DarkColorScheme = darkColorScheme(
     surface = neutro,
     surfaceVariant = branco,
     onSurface = Color.LightGray,
+
+
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -27,6 +28,9 @@ private val LightColorScheme = lightColorScheme(
     secondary = branco,
     tertiary = preto,
     background = branco,
+    surface = neutro,
+    surfaceVariant = neutro,
+    onSurface = Color.DarkGray,
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -43,7 +47,7 @@ private val LightColorScheme = lightColorScheme(
 fun Desafio_mesas_comandasTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

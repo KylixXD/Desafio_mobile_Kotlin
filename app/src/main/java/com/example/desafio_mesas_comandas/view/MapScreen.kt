@@ -2,22 +2,13 @@ package com.example.desafio_mesas_comandas.view
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilterChip
-import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -28,13 +19,13 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.desafio_mesas_comandas.components.FilterBar
 import com.example.desafio_mesas_comandas.components.SearchBarCustom
 import com.example.desafio_mesas_comandas.components.TablesGrid
 import com.example.desafio_mesas_comandas.components.TopBarCustom
 import com.example.desafio_mesas_comandas.ui.theme.neutro
 import com.example.desafio_mesas_comandas.viewmodel.MapViewModel
 import kotlinx.coroutines.launch
-
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -74,7 +65,7 @@ fun MapPage(
     ) {
         TopBarCustom("Mapa de atendimento", onBackClick)
         HorizontalDivider(color = Color.LightGray, thickness = 1.dp)
-        Column (Modifier.background(Color.White)){
+        Column(Modifier.background(Color.White)) {
             SearchBarCustom(
                 value = searchText,
                 onValueChange = viewModel::updateSearch
@@ -82,8 +73,7 @@ fun MapPage(
             HorizontalDivider(color = Color.LightGray, thickness = 1.dp)
         }
 
-
-        Filtros(
+        FilterBar(
             selectedFilter = selectedFilter,
             listState = filterListState,
             onFilterChange = { index, filterName ->
@@ -96,41 +86,11 @@ fun MapPage(
             }
         )
 
-
         TablesGrid(
             lazyPagingItems = lazyPagingItems,
-            gridState = tableGridState
+            gridState = tableGridState,
+            Modifier.padding(bottom = 24.dp)
         )
     }
 }
 
-
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun Filtros(
-    selectedFilter: String,
-    onFilterChange: (index: Int, filterName: String) -> Unit,
-    listState: LazyListState
-) {
-    val filtros = listOf("Visão Geral", "Em Atendimento", "Ociosas", "Disponíveis", "Sem Pedidos")
-    LazyRow(
-        state = listState,
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier.padding(8.dp)
-    ) {
-        itemsIndexed(filtros) { index, item ->
-            FilterChip(
-                selected = (item == selectedFilter),
-                onClick = { onFilterChange(index, item) },
-                label = { Text(item) },
-                colors = FilterChipDefaults.filterChipColors(
-                    containerColor = Color.White,
-                    selectedContainerColor = Color.Black,
-                    labelColor = Color.Black,
-                    selectedLabelColor = Color.White,
-                )
-            )
-        }
-    }
-}
