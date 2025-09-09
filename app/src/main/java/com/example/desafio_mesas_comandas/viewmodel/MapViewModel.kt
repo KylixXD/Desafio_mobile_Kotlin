@@ -4,12 +4,17 @@ import TableRepository
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.example.desafio_mesas_comandas.data.local.TableEntity
 import com.example.desafio_mesas_comandas.utils.ReadJson
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -30,10 +35,20 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _queryFilter = MutableStateFlow<String?>(null)
 
+    val tables: Flow<PagingData<TableEntity>> = combine(
+        _searchText,
+        _queryFilter
+    ) { text, filter ->
+        Pair(text.ifBlank { null }, filter)
+    }.flatMapLatest { (text, filter) ->
+        repository.getPaginatedTables(searchText = text, activityType = filter)
+    }.cachedIn(viewModelScope)
+
+
 
     init {
         loadTables()
-        applyFilters()
+//        applyFilters()
     }
 
     fun loadTables() {
@@ -44,7 +59,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                     withContext(Dispatchers.IO) {
                         val context = getApplication<Application>()
                         val mockTables: List<TableEntity> =
-                            ReadJson.readJsonMock(context, "mock.json")
+                            ReadJson.readJsonMock(context, "Mock.json")
                         repository.upsertAll(mockTables)
                     }
                     _isLoading.value = false
@@ -56,7 +71,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
 
     fun updateSearch(text: String) {
         _searchText.value = text
-        applyFilters()
+//        applyFilters()
     }
 
     fun updateFilter(filterName: String) {
@@ -70,21 +85,21 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
             "Sem Pedidos" -> "waiting"
             else -> null
         }
-        applyFilters()
+//        applyFilters()
     }
 
-    private fun applyFilters() {
-        viewModelScope.launch {
-            val searchTextQuery = _searchText.value.ifBlank { null }
-            val activityTypeQuery = _queryFilter.value
-
-            repository.getFilteredTables(
-                searchText = searchTextQuery,
-                activityType = activityTypeQuery
-            ).collect { filtered ->
-                _mesas.value = filtered
-            }
-        }
-
-    }
+//    private fun applyFilters() {
+//        viewModelScope.launch {
+//            val searchTextQuery = _searchText.value.ifBlank { null }
+//            val activityTypeQuery = _queryFilter.value
+//
+//            repository.getFilteredTables(
+//                searchText = searchTextQuery,
+//                activityType = activityTypeQuery
+//            ).collect { filtered ->
+//                _mesas.value = filtered
+//            }
+//        }
+//
+//    }
 }
