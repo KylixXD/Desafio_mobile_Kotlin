@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TableDao {
+
     @Query(
         """
         SELECT * FROM tables
@@ -21,10 +22,11 @@ interface TableDao {
         ORDER BY title ASC
     """
     )
-    fun getFilteredTables(
+    fun getTablesPagingSource(
         searchText: String?,
         activityType: String?
-    ): Flow<List<TableEntity>>
+    ): PagingSource<Int, TableEntity>
+
 
     @Query(
         """

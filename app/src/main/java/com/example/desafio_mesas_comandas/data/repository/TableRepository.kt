@@ -1,4 +1,7 @@
 import android.app.Application
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.example.desafio_mesas_comandas.data.local.AppDatabase
 import com.example.desafio_mesas_comandas.data.local.TableEntity
 import kotlinx.coroutines.flow.Flow
@@ -12,12 +15,20 @@ class TableRepository(private val application: Application) {
         return dao.tableCount()
     }
 
-    fun getFilteredTables(
+    fun getPaginatedTables(
         searchText: String?,
-        activityType: String? = null
-    ): Flow<List<TableEntity>> =
-        dao.getFilteredTables(searchText, activityType)
-
+        activityType: String?
+    ): Flow<PagingData<TableEntity>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 20,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = {
+                dao.getTablesPagingSource(searchText, activityType)
+            }
+        ).flow
+    }
 
     suspend fun upsertAll(tables: List<TableEntity>) {
         dao.upsertAll(tables)

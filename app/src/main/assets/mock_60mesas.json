@@ -1,0 +1,1747 @@
+{
+  "total": 60,
+  "withOrderSheet": 45,
+  "withoutOrderSheet": 15,
+  "checkpads": [
+    {
+      "id": 82101,
+      "status": true,
+      "hash": "hash01",
+      "title": "01",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452941,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82102,
+      "status": true,
+      "hash": "hash02",
+      "title": "02",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452942,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82103,
+      "status": true,
+      "hash": "hash03",
+      "title": "03",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452943,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82104,
+      "status": true,
+      "hash": "hash04",
+      "title": "04",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452944,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82105,
+      "status": true,
+      "hash": "hash05",
+      "title": "05",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452945,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82106,
+      "status": true,
+      "hash": "hash06",
+      "title": "06",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452946,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82107,
+      "status": true,
+      "hash": "hash07",
+      "title": "07",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452947,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82108,
+      "status": true,
+      "hash": "hash08",
+      "title": "08",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452948,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82109,
+      "status": true,
+      "hash": "hash09",
+      "title": "09",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452949,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82110,
+      "status": true,
+      "hash": "hash10",
+      "title": "10",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452950,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82111,
+      "status": true,
+      "hash": "hash11",
+      "title": "11",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452951,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82112,
+      "status": true,
+      "hash": "hash12",
+      "title": "12",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452952,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82113,
+      "status": true,
+      "hash": "hash13",
+      "title": "13",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452953,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82114,
+      "status": true,
+      "hash": "hash14",
+      "title": "14",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452954,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82115,
+      "status": true,
+      "hash": "hash15",
+      "title": "15",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452955,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82116,
+      "status": true,
+      "hash": "hash16",
+      "title": "16",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452956,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82117,
+      "status": true,
+      "hash": "hash17",
+      "title": "17",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452957,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82118,
+      "status": true,
+      "hash": "hash18",
+      "title": "18",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452958,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82119,
+      "status": true,
+      "hash": "hash19",
+      "title": "19",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452959,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82120,
+      "status": true,
+      "hash": "hash20",
+      "title": "20",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452960,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82121,
+      "status": true,
+      "hash": "hash21",
+      "title": "21",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452961,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82122,
+      "status": true,
+      "hash": "hash22",
+      "title": "22",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452962,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82123,
+      "status": true,
+      "hash": "hash23",
+      "title": "23",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452963,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82124,
+      "status": true,
+      "hash": "hash24",
+      "title": "24",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452964,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82125,
+      "status": true,
+      "hash": "hash25",
+      "title": "25",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452965,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82126,
+      "status": true,
+      "hash": "hash26",
+      "title": "26",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452966,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82127,
+      "status": true,
+      "hash": "hash27",
+      "title": "27",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452967,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82128,
+      "status": true,
+      "hash": "hash28",
+      "title": "28",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452968,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82129,
+      "status": true,
+      "hash": "hash29",
+      "title": "29",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452969,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82130,
+      "status": true,
+      "hash": "hash30",
+      "title": "30",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452970,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82131,
+      "status": true,
+      "hash": "hash31",
+      "title": "31",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452971,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82132,
+      "status": true,
+      "hash": "hash32",
+      "title": "32",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452972,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82133,
+      "status": true,
+      "hash": "hash33",
+      "title": "33",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452973,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82134,
+      "status": true,
+      "hash": "hash34",
+      "title": "34",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452974,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82135,
+      "status": true,
+      "hash": "hash35",
+      "title": "35",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452975,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82136,
+      "status": true,
+      "hash": "hash36",
+      "title": "36",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452976,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82137,
+      "status": true,
+      "hash": "hash37",
+      "title": "37",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452977,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82138,
+      "status": true,
+      "hash": "hash38",
+      "title": "38",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452978,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82139,
+      "status": true,
+      "hash": "hash39",
+      "title": "39",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452979,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82140,
+      "status": true,
+      "hash": "hash40",
+      "title": "40",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452980,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82141,
+      "status": true,
+      "hash": "hash41",
+      "title": "41",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452981,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82142,
+      "status": true,
+      "hash": "hash42",
+      "title": "42",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452982,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82143,
+      "status": true,
+      "hash": "hash43",
+      "title": "43",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452983,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82144,
+      "status": true,
+      "hash": "hash44",
+      "title": "44",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452984,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82145,
+      "status": true,
+      "hash": "hash45",
+      "title": "45",
+      "hasPdv": false,
+      "lastOrderCreated": "2025-06-05 14:05:10",
+      "hasOrderSheets": true,
+      "hasOrder": true,
+      "idleTime": 50,
+      "activity": "inactive",
+      "pdvDevices": [],
+      "orderSheets": [
+        {
+          "id": 2452985,
+          "info": "",
+          "user": null,
+          "opened": "2025-06-05 11:05:49.000000",
+          "seller": {
+            "id": 3359,
+            "name": "Marcos"
+          },
+          "contact": "",
+          "hasPaid": false,
+          "customer": null,
+          "idleTime": 50,
+          "subtotal": 10000,
+          "hasOrders": true,
+          "customerName": "",
+          "lastOrderCreated": "2025-06-05 14:05:10.000000",
+          "numberOfCustomers": 1
+        }
+      ]
+    },
+    {
+      "id": 82146,
+      "status": true,
+      "hash": "hash46",
+      "title": "46",
+      "hasPdv": false,
+      "lastOrderCreated": null,
+      "hasOrderSheets": false,
+      "hasOrder": false,
+      "idleTime": 0,
+      "activity": "empty",
+      "pdvDevices": [],
+      "orderSheets": []
+    },
+    {
+      "id": 82147,
+      "status": true,
+      "hash": "hash47",
+      "title": "47",
+      "hasPdv": false,
+      "lastOrderCreated": null,
+      "hasOrderSheets": false,
+      "hasOrder": false,
+      "idleTime": 0,
+      "activity": "empty",
+      "pdvDevices": [],
+      "orderSheets": []
+    },
+    {
+      "id": 82148,
+      "status": true,
+      "hash": "hash48",
+      "title": "48",
+      "hasPdv": false,
+      "lastOrderCreated": null,
+      "hasOrderSheets": false,
+      "hasOrder": false,
+      "idleTime": 0,
+      "activity": "empty",
+      "pdvDevices": [],
+      "orderSheets": []
+    },
+    {
+      "id": 82149,
+      "status": true,
+      "hash": "hash49",
+      "title": "49",
+      "hasPdv": false,
+      "lastOrderCreated": null,
+      "hasOrderSheets": false,
+      "hasOrder": false,
+      "idleTime": 0,
+      "activity": "empty",
+      "pdvDevices": [],
+      "orderSheets": []
+    },
+    {
+      "id": 82150,
+      "status": true,
+      "hash": "hash50",
+      "title": "50",
+      "hasPdv": false,
+      "lastOrderCreated": null,
+      "hasOrderSheets": false,
+      "hasOrder": false,
+      "idleTime": 0,
+      "activity": "empty",
+      "pdvDevices": [],
+      "orderSheets": []
+    },
+    {
+      "id": 82151,
+      "status": true,
+      "hash": "hash51",
+      "title": "51",
+      "hasPdv": false,
+      "lastOrderCreated": null,
+      "hasOrderSheets": false,
+      "hasOrder": false,
+      "idleTime": 0,
+      "activity": "empty",
+      "pdvDevices": [],
+      "orderSheets": []
+    },
+    {
+      "id": 82152,
+      "status": true,
+      "hash": "hash52",
+      "title": "52",
+      "hasPdv": false,
+      "lastOrderCreated": null,
+      "hasOrderSheets": false,
+      "hasOrder": false,
+      "idleTime": 0,
+      "activity": "empty",
+      "pdvDevices": [],
+      "orderSheets": []
+    },
+    {
+      "id": 82153,
+      "status": true,
+      "hash": "hash53",
+      "title": "53",
+      "hasPdv": false,
+      "lastOrderCreated": null,
+      "hasOrderSheets": false,
+      "hasOrder": false,
+      "idleTime": 0,
+      "activity": "empty",
+      "pdvDevices": [],
+      "orderSheets": []
+    },
+    {
+      "id": 82154,
+      "status": true,
+      "hash": "hash54",
+      "title": "54",
+      "hasPdv": false,
+      "lastOrderCreated": null,
+      "hasOrderSheets": false,
+      "hasOrder": false,
+      "idleTime": 0,
+      "activity": "empty",
+      "pdvDevices": [],
+      "orderSheets": []
+    },
+    {
+      "id": 82155,
+      "status": true,
+      "hash": "hash55",
+      "title": "55",
+      "hasPdv": false,
+      "lastOrderCreated": null,
+      "hasOrderSheets": false,
+      "hasOrder": false,
+      "idleTime": 0,
+      "activity": "empty",
+      "pdvDevices": [],
+      "orderSheets": []
+    },
+    {
+      "id": 82156,
+      "status": true,
+      "hash": "hash56",
+      "title": "56",
+      "hasPdv": false,
+      "lastOrderCreated": null,
+      "hasOrderSheets": false,
+      "hasOrder": false,
+      "idleTime": 0,
+      "activity": "empty",
+      "pdvDevices": [],
+      "orderSheets": []
+    },
+    {
+      "id": 82157,
+      "status": true,
+      "hash": "hash57",
+      "title": "57",
+      "hasPdv": false,
+      "lastOrderCreated": null,
+      "hasOrderSheets": false,
+      "hasOrder": false,
+      "idleTime": 0,
+      "activity": "empty",
+      "pdvDevices": [],
+      "orderSheets": []
+    },
+    {
+      "id": 82158,
+      "status": true,
+      "hash": "hash58",
+      "title": "58",
+      "hasPdv": false,
+      "lastOrderCreated": null,
+      "hasOrderSheets": false,
+      "hasOrder": false,
+      "idleTime": 0,
+      "activity": "empty",
+      "pdvDevices": [],
+      "orderSheets": []
+    },
+    {
+      "id": 82159,
+      "status": true,
+      "hash": "hash59",
+      "title": "59",
+      "hasPdv": false,
+      "lastOrderCreated": null,
+      "hasOrderSheets": false,
+      "hasOrder": false,
+      "idleTime": 0,
+      "activity": "empty",
+      "pdvDevices": [],
+      "orderSheets": []
+    },
+    {
+      "id": 82160,
+      "status": true,
+      "hash": "hash60",
+      "title": "60",
+      "hasPdv": false,
+      "lastOrderCreated": null,
+      "hasOrderSheets": false,
+      "hasOrder": false,
+      "idleTime": 0,
+      "activity": "empty",
+      "pdvDevices": [],
+      "orderSheets": []
+    }
+  ]
+}
