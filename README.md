@@ -10,11 +10,11 @@ Um desafio técnico proposto pela Pigz para o desenvolvimento de um aplicativo A
 - [Funcionalidades](#funcionalidades)
 - [Arquitetura](#arquitetura)
 - [Estrutura de Pastas](#estrutura-de-pastas)
-- [Instalação](#instalacao)
-- [Banco de dados (Room)](#banco-de-dados)
+- [Instalação](#instalação)
+- [Banco de dados (Room)](#banco-de-dados-(room))
 - [Componentes Importantes](#componentes-importantes)
 - [Fluxo de dados](#fluxo-de-dados)
-- [Utilitários](#utilitarios)
+- [Utilitários](#utilitários)
 
 ## Sobre
 O Pigz Comanda é um aplicativo Android desenvolvido em Kotlin utilizando o Jetpack Compose para a interface do usuário, a arquitetura MVVM (Model-View-ViewModel) e o banco de dados Room para persistência local.O aplicativo tem como objetivo principal gerenciar mesas e comandas, simulando o fluxo de um sistema de pedidos em restaurantes.
