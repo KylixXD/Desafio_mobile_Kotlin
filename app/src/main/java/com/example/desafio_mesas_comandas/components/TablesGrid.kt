@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.example.desafio_mesas_comandas.data.local.TableEntity
@@ -33,6 +34,7 @@ import com.example.desafio_mesas_comandas.data.local.TableEntity
 fun TablesGrid(
     lazyPagingItems: LazyPagingItems<TableEntity>,
     gridState: LazyGridState,
+    navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
     val receiptIcon = Icons.Default.Receipt
@@ -69,7 +71,10 @@ fun TablesGrid(
                             accountCircleIcon = accountCircleIcon,
                             scheduleIcon = scheduleIcon,
                             paidIcon = paidIcon,
-                            roomServiceIcon = roomServiceIcon
+                            roomServiceIcon = roomServiceIcon,
+                            onNavigate = { route  ->
+                                navController.navigate(route )
+                            }
                         )
                     }
                 }

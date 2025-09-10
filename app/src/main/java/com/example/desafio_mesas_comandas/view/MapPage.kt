@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.desafio_mesas_comandas.components.FilterBar
 import com.example.desafio_mesas_comandas.components.SearchBarCustom
@@ -29,26 +30,23 @@ import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MapScreen(modifier: Modifier = Modifier, navController: NavController) {
+fun MapScreen(modifier: Modifier = Modifier, navController: NavHostController) {
     Scaffold(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier) {
-            MapPage(onBackClick = { navController.popBackStack("HomePage", inclusive = false) })
+            MapPage(
+                onBackClick = { navController.popBackStack("HomePage", inclusive = false) },
+                navController = navController
+            )
         }
     }
 }
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@Composable
-fun MapScreen(navController: NavController) {
-    Scaffold(modifier = Modifier.fillMaxSize()) {
-        MapPage(onBackClick = { navController.popBackStack() })
-    }
-}
 
 @Composable
 fun MapPage(
     onBackClick: () -> Unit,
-    viewModel: MapViewModel = viewModel()
+    viewModel: MapViewModel = viewModel(),
+    navController: NavHostController,
 ) {
     val lazyPagingItems = viewModel.tables.collectAsLazyPagingItems()
     val searchText by viewModel.searchText.collectAsState()
@@ -89,8 +87,10 @@ fun MapPage(
         TablesGrid(
             lazyPagingItems = lazyPagingItems,
             gridState = tableGridState,
-            Modifier.padding(bottom = 24.dp)
-        )
+            navController = navController,
+            Modifier.padding(bottom = 24.dp),
+
+            )
     }
 }
 

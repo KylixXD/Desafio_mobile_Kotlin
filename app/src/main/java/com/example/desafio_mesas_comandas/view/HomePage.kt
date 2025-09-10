@@ -58,7 +58,7 @@ fun TelaInicial(navController: NavController, modifier: Modifier = Modifier) {
     HeaderHome()
     TitleHome("Rafael Nóbrega", "Sei la Restaurante")
     MenuGrid(
-        onNovoPedidoClick = { showBottomSheet = true },
+        onNewOrderoClick = { showBottomSheet = true },
         onNavigate = { route -> navController.navigate(route) }
     )
 
@@ -136,7 +136,7 @@ fun Icone(
 fun MenuGrid(
     modifier: Modifier = Modifier,
     onNavigate: (String) -> Unit,
-    onNovoPedidoClick: () -> Unit
+    onNewOrderoClick: () -> Unit
 ) {
     Spacer(modifier = Modifier.height(24.dp))
     LazyVerticalGrid(
@@ -149,7 +149,7 @@ fun MenuGrid(
             CardsMenu(
                 "Novo Pedido",
                 icon = ImageVector.vectorResource(id = R.drawable.add_icon),
-                onClick = onNovoPedidoClick,
+                onClick = onNewOrderoClick,
             )
         }
         item {
