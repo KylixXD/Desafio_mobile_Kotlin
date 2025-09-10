@@ -37,6 +37,7 @@ O Pigz Comanda é um aplicativo Android desenvolvido em Kotlin utilizando o Jetp
 - Filtros para busca
 - Pesquisa avançada
 - Detalhes na mesa
+- Listagem de pedidos
 
 ## Arquitetura
 #### Model
@@ -54,16 +55,17 @@ Implementada em Jetpack Compose, com componentes reutilizáveis(`CardTable`, `Ta
 app/src/main/java/com/example/desafio_mesas_comandas/
 │── data/
 │   ├── local/
-│   │   ├── TableEntity.kt        # Entidade da Room
-│   │   ├── TableDao.kt           # DAO para operações no BD
-│   │   ├── TableDatabase.kt      # Classe do banco de dados Room
+│   │   ├── TableEntity.kt        # Entidade da Room referente a mesa
+│   │   ├── TableDao.kt           # DAO para operações na mesa
+│   │   ├── AppDatabase.kt        # Classe do banco de dados Room
+│   │   ├── OrderEntity.kt        # Entidade da Room referente o pedido
+│   │   ├── OrderDao.kt           # DAO para operações no pedido
 │   └── repository/
-│       └── TableRepository.kt    # Repositório para abstração de dados
+│       └── TableRepository.kt    # Repositório para abstração de dados das mesas
+│       └── OrderRepository.kt    # Repositório para abstração de dados dos pedidos
 │
 │── model/
-│   ├── Seller.kt                 # Modelo de vendedor
-│   └── CheckpadApiResponse.kt    # Modelo de resposta mock
-│
+│   ├── CheckPadModel.kt          # Modelo para representar os dados que vem do Mock.Json
 │── utils/
 │   └── ReadJson.kt               # Utilitário para ler mocks JSON
 │   └── MasksHelp.kt              # Utilitário para mascarar dados
@@ -76,14 +78,13 @@ app/src/main/java/com/example/desafio_mesas_comandas/
 │       └── ...
 │
 │── viewmodel/
-│   └── TableViewModel.kt         # ViewModel principal
-│
+│   └── TableViewModel.kt         # ViewModel para controlar as mesas
+│   └── OrderViewModel.kt         # ViewModel para controlar os pedidos
+│   └── OrderViewModelFactory.kt  #Factory para instanciar a OrderViewModel
 │── ui/theme/
 │   ├── Color.kt                  # Definições de cores
 │   ├── Theme.kt                  # Configuração de tema Material3
 │   └── Type.kt                   # Definições de tipografia
-
-
 ```
 
 ### Banco de dados (Room)
@@ -190,6 +191,7 @@ abstract class AppDatabase : RoomDatabase() {
 * HomePage.kt &rarr; Pagina inicial do App.
 * MapScreen.kt &rarr; Página de mapeamento das mesas.
 * ConfigurationPage.kt &rarr; Pagina de configurações.
+* OrderPage.kt &rarr; Pagina para mostrar os pedidos de uma mesa com mais detalhes.
 * TablesGrid.kt &rarr; Exibe as mesas em formato de Grid.
 * CardTable.kt &rarr; Componente visual da mesa com os dados da mesa.
 * SearchBarCustom.kt &rarr; Filtro de Pesquisa de mesas.
