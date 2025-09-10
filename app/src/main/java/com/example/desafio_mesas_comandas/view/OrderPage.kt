@@ -1,6 +1,7 @@
 package com.example.desafio_mesas_comandas.view
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -48,7 +49,10 @@ fun OrderPage(navController: NavHostController, mesaId: Int) {
     ) { padding ->
         Column(modifier = Modifier.padding(padding)) {
             if (orders.isEmpty()) {
-                Text("Nenhum pedido encontrado para essa mesa")
+                Row(Modifier.padding(20.dp)) {
+                    Text("Nenhum pedido encontrado para essa mesa :/", style = Typography.titleLarge)
+                }
+
             } else {
                 orders.forEach { order ->
                     Card(
