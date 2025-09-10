@@ -27,17 +27,6 @@ interface TableDao {
         activityType: String?
     ): PagingSource<Int, TableEntity>
 
-
-    @Query(
-        """
-        SELECT * FROM `CheckPad_Tables`
-        WHERE (title LIKE '%' || :q || '%' OR customerName LIKE '%' || :q || '%')
-          AND (activity = :statusFilter)
-        ORDER BY title ASC
-    """
-    )
-    fun paging(q: String, statusFilter: String): PagingSource<Int, TableEntity>
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsertAll(items: List<TableEntity>)
 

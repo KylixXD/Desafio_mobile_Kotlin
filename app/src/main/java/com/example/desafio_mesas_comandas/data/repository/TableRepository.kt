@@ -22,9 +22,9 @@ class TableRepository(private val application: Application) {
     ): Flow<PagingData<TableEntity>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 20,
+                pageSize = 10,
                 prefetchDistance = 10,
-                initialLoadSize = 60,
+                initialLoadSize = 30,
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {

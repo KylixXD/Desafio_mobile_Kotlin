@@ -1,5 +1,6 @@
 package com.example.desafio_mesas_comandas.components
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -68,19 +69,15 @@ fun CardTable(
 
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     if (mesa.orderCount > 0) {
-                        Row(
-                            Modifier.padding(horizontal = 8.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Icon(
-                                receiptIcon,
-                                contentDescription = "Pedidos",
-                                Modifier.size(10.dp)
-                            )
-                            Text(text = "${mesa.orderCount}", style = Typography.labelSmall)
-                        }
-
+                        Icon(
+                            receiptIcon,
+                            contentDescription = "Pedidos",
+                            Modifier.size(10.dp)
+                        )
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text(text = "${mesa.orderCount}", style = Typography.labelSmall)
                     }
+                    Spacer(modifier = Modifier.width(8.dp))
 
                     Icon(
                         accountCircleIcon,
@@ -119,4 +116,3 @@ fun CardTable(
         }
     }
 }
-

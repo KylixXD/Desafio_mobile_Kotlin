@@ -35,7 +35,6 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "Tables_Database.db"
                 )
-                    // 3. Adicione TODAS as migrations necessárias em ordem
                     .addMigrations(MIGRATION_2_3, MIGRATION_3_4)
                     .build()
 
