@@ -10,9 +10,10 @@ Um desafio técnico proposto pela Pigz para o desenvolvimento de um aplicativo A
 - [Funcionalidades](#funcionalidades)
 - [Arquitetura](#arquitetura)
 - [Estrutura de Pastas](#estrutura-de-pastas)
-- [Banco de dados (Room)](#banco-de-dados-(room))
+- [Banco de dados (Room)](#banco-de-dados-room)
 - [Componentes Importantes](#componentes-importantes)
 - [Fluxo de dados](#fluxo-de-dados)
+- [Exemplos de uso](#exemplos-de-uso)
 - [Utilitários](#utilitários)
 - [Como Executar o Projeto](#como-executar-o-projeto)
 
@@ -29,12 +30,13 @@ O Pigz Comanda é um aplicativo Android desenvolvido em Kotlin utilizando o Jetp
 - Desseralização do Mock: Gson
 - Gerenciamento de dependências: Gradle (KTS)
 - Coroutines & Flow: para chamadas assíncronas e reatividade
+- Paging 3: para paginação de dados
 
 ## Funcionalidades
 - Listagem de mesas
 - Filtros para busca
 - Pesquisa avançada
-- Detalhes da mesa
+- Detalhes na mesa
 
 ## Arquitetura
 #### Model
@@ -212,11 +214,53 @@ abstract class AppDatabase : RoomDatabase() {
 - `TableList` recebe os dados da `ViewModel`.
 - Renderiza os itens em `TableItem`.
 
+## Exemplos de uso
+
+### Repository 
+```bash
+val repository = TableRepository(application)
+val mesasPaginadas = repository.getPaginatedTables(
+    searchText = "Mesa 01",
+    activityType = "inactive"
+)
+```
+### ViewModel 
+```bash
+val tables: Flow<PagingData<TableEntity>> = combine(
+    _searchText,
+    _queryFilter
+) { text, filter ->
+    Pair(text.ifBlank { null }, filter)
+}.flatMapLatest { (text, filter) ->
+    repository.getPaginatedTables(searchText = text, activityType = filter)
+}.cachedIn(viewModelScope)
+
+)
+```
+
+### UI (TablesGrid)
+```bash
+val lazyPagingItems = viewModel.tables.collectAsLazyPagingItems()
+TablesGrid(
+    lazyPagingItems = lazyPagingItems,
+    gridState = rememberLazyGridState()
+)
+
+```
+
+### Filtros
+```bash
+viewModel.updateFilter("Ociosas") // mostra mesas com activity = "inactive"
+
+
+```
+
+
 
 ## Utilitários
 
 * ReadJson.kt &rarr; Lê arquivos Json mockados do assests, desserializa com Gson e transforma em objeto Java.
-* MasksHelp.kt &rarr; Ajuda na formatalção de dados(máscaras).
+* MasksHelp.kt &rarr; Ajuda na formatação de dados (máscaras).
 
 ## Como Executar o Projeto
 
