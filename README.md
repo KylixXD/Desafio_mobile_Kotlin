@@ -23,7 +23,8 @@ O Pigz Comanda é um aplicativo Android desenvolvido em Kotlin utilizando o Jetp
 - Linguagem: Kotlin
 - UI Toolkit: Jetpack Compose
 - Arquitetura: MVVM
-- Controle de versão: Git e Github
+- Controle de versão: Git
+- Repositório: Github
 - Banco de Dados: Room
 - Desseralização do Mock: Gson
 - Gerenciamento de dependências: Gradle (KTS)
