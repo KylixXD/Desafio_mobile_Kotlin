@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import com.example.desafio_mesas_comandas.view.ConfigurationPage
 import com.example.desafio_mesas_comandas.view.HomePage
 import com.example.desafio_mesas_comandas.view.MapScreen
+import com.example.desafio_mesas_comandas.view.OrderPage
 
 @Composable
 fun AppNavigation(navController: NavHostController) {
@@ -22,6 +23,10 @@ fun AppNavigation(navController: NavHostController) {
         }
         composable("ConfigurationPage") {
             ConfigurationPage(navController = navController)
+        }
+        composable("OrderPage/{mesaId}") { backStackEntry ->
+            val mesaId = backStackEntry.arguments?.getString("mesaId")?.toIntOrNull() ?: 0
+            OrderPage(navController = navController, mesaId = mesaId)
         }
     }
 }

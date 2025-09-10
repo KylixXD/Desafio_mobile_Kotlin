@@ -35,7 +35,8 @@ fun CardTable(
     accountCircleIcon: ImageVector,
     scheduleIcon: ImageVector,
     paidIcon: ImageVector,
-    roomServiceIcon: ImageVector
+    roomServiceIcon: ImageVector,
+    onNavigate: (String) -> Unit,
 ) {
     val backgroundColors = remember(mesa.activity) {
         when (mesa.activity) {
@@ -54,6 +55,7 @@ fun CardTable(
             .height(116.dp),
         shape = RoundedCornerShape(8.dp),
         colors = CardDefaults.cardColors(containerColor = backgroundColors),
+        onClick = { onNavigate("OrderPage/${mesa.id}") }
     ) {
         Column(
             modifier = Modifier.padding(horizontal = 8.dp, vertical = 8.dp)
