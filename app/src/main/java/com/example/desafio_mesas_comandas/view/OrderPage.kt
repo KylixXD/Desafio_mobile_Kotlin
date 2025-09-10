@@ -9,16 +9,14 @@ import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-//import com.example.desafio_mesas_comandas.components.CardOrderInfo
 import com.example.desafio_mesas_comandas.components.TopBarCustom
 import com.example.desafio_mesas_comandas.ui.theme.Typography
 import com.example.desafio_mesas_comandas.ui.theme.neutro
@@ -42,7 +40,7 @@ fun OrderPage(navController: NavHostController, mesaId: Int) {
     Scaffold(
         topBar = {
             TopBarCustom(
-                title = "Pedidos da mesa $mesaId",
+                title = "Pedidos da mesa ($mesaId)",
                 onBackClick = { navController.popBackStack() }
             )
         }

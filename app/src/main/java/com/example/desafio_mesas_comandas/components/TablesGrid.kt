@@ -54,7 +54,7 @@ fun TablesGrid(
         } else {
             LazyVerticalGrid(
                 state = gridState,
-                columns = GridCells.Fixed(3),
+                columns = GridCells.Adaptive(100.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 contentPadding = PaddingValues(start = 8.dp, end = 8.dp, bottom = 34.dp)
