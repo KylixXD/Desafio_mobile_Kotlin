@@ -10,7 +10,6 @@ Um desafio técnico proposto pela Pigz para o desenvolvimento de um aplicativo A
 - [Funcionalidades](#funcionalidades)
 - [Arquitetura](#arquitetura)
 - [Estrutura de Pastas](#estrutura-de-pastas)
-- [Instalação](#instalação)
 - [Banco de dados (Room)](#banco-de-dados-(room))
 - [Componentes Importantes](#componentes-importantes)
 - [Fluxo de dados](#fluxo-de-dados)
@@ -82,15 +81,6 @@ app/src/main/java/com/example/desafio_mesas_comandas/
 │   └── Type.kt                   # Definições de tipografia
 
 
-```
-
-
-## Instalação
-Passos pra rodar localmente:
-```bash
-git clone https://github.com/KylixXD/Desafio_mobile_Kotlin.git
-cd desafio_mesas_comandas 
-./gradlew build
 ```
 
 ### Banco de dados (Room)
