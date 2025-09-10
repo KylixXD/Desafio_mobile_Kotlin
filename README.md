@@ -15,6 +15,7 @@ Um desafio técnico proposto pela Pigz para o desenvolvimento de um aplicativo A
 - [Componentes Importantes](#componentes-importantes)
 - [Fluxo de dados](#fluxo-de-dados)
 - [Utilitários](#utilitários)
+- [Como Executar o Projeto](#como-executar-o-projeto)
 
 ## Sobre
 O Pigz Comanda é um aplicativo Android desenvolvido em Kotlin utilizando o Jetpack Compose para a interface do usuário, a arquitetura MVVM (Model-View-ViewModel) e o banco de dados Room para persistência local.O aplicativo tem como objetivo principal gerenciar mesas e comandas, simulando o fluxo de um sistema de pedidos em restaurantes.
@@ -47,42 +48,40 @@ Implementada em Jetpack Compose, com componentes reutilizáveis(`CardTable`, `Ta
 
 ## Estrutura de Pastas 
 
-```bash
-desafio_mesas_comandas/
-│── local/               # Persistência (Room)
-│   ├── AppDatabase.kt
-│   ├── TableDao.kt
-│   └── TableEntity.kt
+```bash]
+app/src/main/java/com/example/desafio_mesas_comandas/
+│── data/
+│   ├── local/
+│   │   ├── TableEntity.kt        # Entidade da Room
+│   │   ├── TableDao.kt           # DAO para operações no BD
+│   │   ├── TableDatabase.kt      # Classe do banco de dados Room
+│   └── repository/
+│       └── TableRepository.kt    # Repositório para abstração de dados
 │
-│── repository/          # Repositório (camada de acesso a dados)
-│   └── TableRepository.kt
+│── model/
+│   ├── Seller.kt                 # Modelo de vendedor
+│   └── CheckpadApiResponse.kt    # Modelo de resposta mock
 │
-│── model/               # Modelos de dados
-│   └── CheckpadModel.kt
+│── utils/
+│   └── ReadJson.kt               # Utilitário para ler mocks JSON
+│   └── MasksHelp.kt              # Utilitário para mascarar dados
 │
-│── components/          # Componentes Jetpack Compose reutilizáveis
-│   ├── CardTable.kt
-│   ├── TablesGrid.kt
-│   ├── SearchBarCustom.kt
-│   └── ...
+│── view/
+│   ├── MainActivity.kt           # Tela principal
+│   └── components/
+│       ├── TableList.kt          # Lista de mesas (Composable)
+│       └── TableItem.kt          # Item individual (Composable)
+│       └── ...
 │
-│── viewmodel/           # Lógica de apresentação
-│   └── MapViewModel.kt
+│── viewmodel/
+│   └── TableViewModel.kt         # ViewModel principal
 │
-│── view/                # Telas da aplicação
-│   ├── HomePage.kt
-│   ├── MapScreen.kt
-│   ├── ConfigurationPage.kt
-│   └── MyApp.kt
-│
-│── utils/               # Funções utilitárias
-│   ├── ReadJson.kt
-│   └── MasksHelp.kt
-│
-│── theme/               # Tema do app (Material 3)
-│   ├── Color.kt
-│   ├── Theme.kt
-│   └── Type.kt
+│── ui/theme/
+│   ├── Color.kt                  # Definições de cores
+│   ├── Theme.kt                  # Configuração de tema Material3
+│   └── Type.kt                   # Definições de tipografia
+
+
 ```
 
 
@@ -97,7 +96,7 @@ cd desafio_mesas_comandas
 ### Banco de dados (Room)
 
 ## Entity
-Campos usados na visualização dos cards das mesas.
+Contém as entidades(tabelas) usadas para a representação de uma mesa e comandas.
 ```bash
 @Entity
 data class TableEntity(
@@ -114,7 +113,7 @@ data class TableEntity(
 ```
 
 ## DAO
-Fornece métodos para acessar e manipular os dados da tabela `Checkpad_Tables` no banco de dados local. Inclui operações para buscar paginada, busca avançada e contagem de mesas.
+Fornece métodos para acessar e manipular os dados da tabela.`Checkpad_Tables` no banco de dados local. Inclui operações para buscar paginada, busca avançada e contagem de mesas.
 ```bash
 @Dao
 interface TableDao {
@@ -204,17 +203,58 @@ abstract class AppDatabase : RoomDatabase() {
 
 ## Fluxo de dados
 
-1. A **UI(View)** solicita dados ao **ViewModel**.
-2. O **ViewModel** consulta o **Repository**.
-3. O **Repository** decide se busca no **DAO(Room)** ou em fonte externa(**Mock Json**).
-4. Os dados são retornados via **Flow** para o **ViewModel**.
-5. O **ViewModel** atualiza o estado observado pela **View**.
-6. A **UI Compose** se recompõe automaticamente.
+1. **Carregamento inicial**
+- O aplicativo inicia em `MainActivity`.
+- O `TableViewModel` é instanciado.
+- Dados são buscados do Room ou, se necessário, do mock JSON (`ReadJson.kt`).
+2. **Banco de Dados (Room)**
+- `TableEntity` define a estrutura da tabela.
+- `TableDao` expõe queries (ex: buscar mesas, contar pedidos e etc..).
+- `TableDatabase` fornece acesso ao Room Database.
+3. **Repository** 
+- O `TableRepository` decide de onde os dados vêm (Room ou JSON).
+- Ele expõe fluxos (`Flow`) para o `TableViewModel`.
+4. **ViewModel**.
+- O TableViewModel escuta os dados do Repository.
+- Expõe os estados (`StateFlow` ou `LiveData`) para a UI.
+5. **UI (Compose)**
+- `TableList` recebe os dados da `ViewModel`.
+- Renderiza os itens em `TableItem`.
+
 
 ## Utilitários
 
 * ReadJson.kt &rarr; Lê arquivos Json mockados do assests, desserializa com Gson e transforma em objeto Java.
 * MasksHelp.kt &rarr; Ajuda na formatalção de dados(máscaras).
+
+## Como Executar o Projeto
+
+### 1. Pré-requisitos
+Antes de rodar o projeto, verifique se você tem instalado:
+- [Android Studio](https://developer.android.com/studio) (versão mais recente recomendada)  
+- [JDK 17+](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)  
+- SDK do Android configurado no Android Studio  
+- Emulador Android configurado **ou** um dispositivo físico conectado via USB  
+
+---
+
+### 2. Clonar o repositório
+Clone o projeto para sua máquina local:
+```bash
+git clone https://github.com/usuario/Desafio_mobile_Kotlin.git
+cd Desafio_mobile_Kotlin
+```
+### 3. Abrir no Android Studio
+1. Abra o Android Studio
+2. Clique em File > Open
+3. Selecione a pasta do projeto `Desafio_mobile_Kotlin`
+4. Aguarde o **Gradle Sync** finalizar (o Android Studio baixa as dependências automaticamente).
+
+### 4. Executar o Projeto
+- No topo da IDE, escolha o dispositivo de execução:
+    - Emulador Android (Pixel, Nexus, etc.)
+    -  Dispositivo físico (habilitar modo desenvolvedor e depuração USB)
+- Clique no botão ▶️ Run (Shift + F10)   
 
 
 
