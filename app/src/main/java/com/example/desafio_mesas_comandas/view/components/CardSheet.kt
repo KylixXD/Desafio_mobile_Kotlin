@@ -1,4 +1,4 @@
-package com.example.desafio_mesas_comandas.components
+package com.example.desafio_mesas_comandas.view.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import com.example.desafio_mesas_comandas.ui.theme.neutro
-import com.example.desafio_mesas_comandas.view.Icone
+import com.example.desafio_mesas_comandas.view.IconCustom
 
 @Composable
 fun CardSheet(
@@ -36,7 +36,7 @@ fun CardSheet(
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Icone(
+            IconCustom(
                 imageVector = leftIcon,
                 modifier = Modifier.size(24.dp),
                 contentDescription = texto
@@ -49,7 +49,7 @@ fun CardSheet(
                     .padding(horizontal = 16.dp)
             )
 
-            Icone(
+            IconCustom(
                 imageVector = rightIcon,
                 modifier = Modifier.size(24.dp),
                 contentDescription = texto

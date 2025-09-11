@@ -1,4 +1,4 @@
-package com.example.desafio_mesas_comandas.components
+package com.example.desafio_mesas_comandas.view.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

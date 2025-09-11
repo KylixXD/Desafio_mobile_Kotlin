@@ -35,25 +35,26 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.desafio_mesas_comandas.R
-import com.example.desafio_mesas_comandas.components.CardSheet
-import com.example.desafio_mesas_comandas.components.CardsMenu
-import com.example.desafio_mesas_comandas.components.HeaderHome
-import com.example.desafio_mesas_comandas.components.TitleHome
+import com.example.desafio_mesas_comandas.view.components.CardSheet
+import com.example.desafio_mesas_comandas.view.components.CardsMenu
+import com.example.desafio_mesas_comandas.view.components.HeaderHome
+import com.example.desafio_mesas_comandas.view.components.TitleHome
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomePage(modifier: Modifier = Modifier, navController: NavController) {
     Scaffold(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier) {
-            TelaInicial(navController)
+            HomePageSkeleton(navController)
         }
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TelaInicial(navController: NavController, modifier: Modifier = Modifier) {
+fun HomePageSkeleton(navController: NavController, modifier: Modifier = Modifier) {
     var showBottomSheet by remember { mutableStateOf(false) }
+
 
     HeaderHome()
     TitleHome("Rafael Nóbrega", "Sei la Restaurante")
@@ -105,7 +106,7 @@ fun TelaInicial(navController: NavController, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun Icone(
+fun IconCustom(
     modifier: Modifier = Modifier,
     imageVector: ImageVector? = null,
     @DrawableRes drawableRes: Int? = null,
@@ -163,7 +164,7 @@ fun MenuGrid(
             CardsMenu(
                 "Configurações",
                 icon = ImageVector.vectorResource(id = R.drawable.settings_icon),
-                onClick = { onNavigate("ConfigurationPage") },
+                onClick = { },
             )
         }
     }

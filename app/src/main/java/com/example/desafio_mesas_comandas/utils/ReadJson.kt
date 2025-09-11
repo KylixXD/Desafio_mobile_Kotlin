@@ -58,7 +58,7 @@ object ReadJson {
             val response: CheckpadApiResponse = Gson().fromJson(reader, type)
 
             response.checkpads
-                ?.firstOrNull { it.id == mesaId } // filtra a mesa
+                ?.firstOrNull { it.id == mesaId }
                 ?.orderSheets
                 ?.map { order ->
                     OrderEntity(

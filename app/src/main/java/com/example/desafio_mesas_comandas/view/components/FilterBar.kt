@@ -1,4 +1,4 @@
-package com.example.desafio_mesas_comandas.components
+package com.example.desafio_mesas_comandas.view.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
@@ -13,7 +13,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -23,13 +22,13 @@ fun FilterBar(
     onFilterChange: (index: Int, filterName: String) -> Unit,
     listState: LazyListState
 ) {
-    val filtros = listOf("Visão Geral", "Em Atendimento", "Ociosas", "Disponíveis", "Sem Pedidos")
+    val filterList = listOf("Visão Geral", "Em Atendimento", "Ociosas", "Disponíveis", "Sem Pedidos")
     LazyRow(
         state = listState,
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier.padding(8.dp)
     ) {
-        itemsIndexed(filtros) { index, item ->
+        itemsIndexed(filterList) { index, item ->
             FilterChip(
                 selected = (item == selectedFilter),
                 onClick = { onFilterChange(index, item) },

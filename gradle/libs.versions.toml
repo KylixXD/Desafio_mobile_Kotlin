@@ -21,6 +21,7 @@ pagingCommon = "3.3.6"
 foundation = "1.9.0"
 uiText = "1.9.0"
 uiGraphics = "1.9.0"
+uiUtil = "1.9.0"
 
 [libraries]
 androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
@@ -53,6 +54,7 @@ androidx-paging-common = { group = "androidx.paging", name = "paging-common", ve
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundation" }
 androidx-compose-ui-text = { group = "androidx.compose.ui", name = "ui-text", version.ref = "uiText" }
 androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics", version.ref = "uiGraphics" }
+androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util", version.ref = "uiUtil" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -1,4 +1,4 @@
-package com.example.desafio_mesas_comandas.components
+package com.example.desafio_mesas_comandas.view.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -62,7 +62,7 @@ fun TablesGrid(
             ) {
                 items(
                     count = lazyPagingItems.itemCount,
-                    key = { index -> lazyPagingItems[index]?.id ?: index }
+//                    key = { index -> lazyPagingItems[index]?.id ?: index }
                 ) { index ->
                     lazyPagingItems[index]?.let { mesa ->
                         CardTable(

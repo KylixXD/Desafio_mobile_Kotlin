@@ -1,4 +1,4 @@
-package com.example.desafio_mesas_comandas.components
+package com.example.desafio_mesas_comandas.view.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import com.example.desafio_mesas_comandas.ui.theme.neutro
-import com.example.desafio_mesas_comandas.view.Icone
 
 @Composable
 fun CardsMenu(texto: String, icon: ImageVector, onClick: () -> Unit) {

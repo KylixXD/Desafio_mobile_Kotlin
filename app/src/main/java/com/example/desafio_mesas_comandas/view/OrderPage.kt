@@ -17,7 +17,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.desafio_mesas_comandas.components.TopBarCustom
+import com.example.desafio_mesas_comandas.view.components.TopBarCustom
 import com.example.desafio_mesas_comandas.ui.theme.Typography
 import com.example.desafio_mesas_comandas.ui.theme.neutro
 import com.example.desafio_mesas_comandas.utils.toBrazilianCurrencyFromCents
@@ -40,16 +40,17 @@ fun OrderPage(navController: NavHostController, mesaId: Int) {
     Scaffold(
         topBar = {
             TopBarCustom(
-                title = "Pedidos da mesa ($mesaId)",
+                title = "Pedidos da mesa",
                 onBackClick = { navController.popBackStack() }
             )
         }
     ) { padding ->
         Column(modifier = Modifier.padding(padding)) {
             if (orders.isEmpty()) {
-                Row(Modifier.padding(20.dp)) {
-                    Text("Nenhum pedido encontrado para essa mesa :/", style = Typography.titleLarge)
-                }
+                    Row(Modifier.padding(20.dp)) {
+                        Text("Mesa Está Vazia", style = Typography.titleLarge)
+                    }
+
 
             } else {
                 orders.forEach { order ->

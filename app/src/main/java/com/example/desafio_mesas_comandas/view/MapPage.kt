@@ -17,13 +17,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.example.desafio_mesas_comandas.components.FilterBar
-import com.example.desafio_mesas_comandas.components.SearchBarCustom
-import com.example.desafio_mesas_comandas.components.TablesGrid
-import com.example.desafio_mesas_comandas.components.TopBarCustom
+import com.example.desafio_mesas_comandas.view.components.FilterBar
+import com.example.desafio_mesas_comandas.view.components.SearchBarCustom
+import com.example.desafio_mesas_comandas.view.components.TablesGrid
+import com.example.desafio_mesas_comandas.view.components.TopBarCustom
 import com.example.desafio_mesas_comandas.ui.theme.neutro
 import com.example.desafio_mesas_comandas.viewmodel.MapViewModel
 import kotlinx.coroutines.launch
